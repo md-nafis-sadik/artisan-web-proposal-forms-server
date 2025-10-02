@@ -74,6 +74,7 @@ class EmailService {
       };
 
       const info = await this.transporter.sendMail(mailOptions);
+      console.timeEnd("Prepare Mail Options");
       console.log("📤 Email sent successfully:", info.messageId);
       
       return {
