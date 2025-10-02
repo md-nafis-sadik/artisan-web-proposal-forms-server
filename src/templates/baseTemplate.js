@@ -17,10 +17,7 @@ export const generatePageTemplate = (
 };
 
 
-export const generateTailwindHTML = (formData) => {
-  const steps = Object.keys(formData).filter(
-    (stepKey) => formData[stepKey] && Object.keys(formData[stepKey]).length > 0
-  );
+export const generateTailwindHTML = (content) => {
 
   return `
   <!DOCTYPE html>
@@ -124,27 +121,38 @@ export const generateTailwindHTML = (formData) => {
              class="w-[82px] h-auto mx-auto mb-4" alt="Logo" />
       </div>
 
-      ${steps
-        .map((stepKey, index) => {
-          switch (stepKey) {
-            case "step1":
-              return generateStep1HTML(formData[stepKey], false, false);
-            case "step2":
-              return generateStep2HTML(formData[stepKey], true, false);
-            case "step3":
-              return generateStep3HTML(formData, true, true);
-            default:
-              return "";
-          }
-        })
-        .join("")}
+      ${content}
   </body>
   </html>`;
+};
+
+export const piProposalFormTemplate = (formData) => {
+  const steps = Object.keys(formData).filter(
+    (stepKey) => formData[stepKey] && Object.keys(formData[stepKey]).length > 0
+  );
+
+  const content = steps
+    .map((stepKey) => {
+      switch (stepKey) {
+        case "step1":
+          return generateStep1HTML(formData[stepKey], false, false);
+        case "step2":
+          return generateStep2HTML(formData[stepKey], true, false);
+        case "step3":
+          return generateStep3HTML(formData, true, true);
+        default:
+          return "";
+      }
+    })
+    .join("");
+
+  return generateTailwindHTML(content);
 };
 
 
 export default {
   generatePageTemplate,
-  generateTailwindHTML
+  generateTailwindHTML,
+  piProposalFormTemplate,
 };
 

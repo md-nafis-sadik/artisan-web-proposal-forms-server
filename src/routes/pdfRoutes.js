@@ -1,6 +1,7 @@
 import express from "express";
 import pdfService from "../services/pdfService.js";
 import { generateTailwindHTML } from "../templates/templateManager.js";
+import { piProposalFormTemplate } from "../templates/baseTemplate.js";
 
 const router = express.Router();
 
@@ -8,11 +9,9 @@ const router = express.Router();
 router.post("/generate-pdf", async (req, res) => {
   try {
     console.log("PDF generation request received");
-    console.log("Request body keys:", Object.keys(req.body));
 
     const { formData } = req.body;
     
-    // Validate required data
     if (!formData) {
       return res.status(400).json({
         success: false,
@@ -20,8 +19,7 @@ router.post("/generate-pdf", async (req, res) => {
       });
     }
 
-    console.log("Generating HTML from form data...");
-    const htmlContent = generateTailwindHTML(formData);
+    const htmlContent = piProposalFormTemplate(formData);
     
     if (!htmlContent || htmlContent.length === 0) {
       return res.status(400).json({
@@ -30,10 +28,6 @@ router.post("/generate-pdf", async (req, res) => {
       });
     }
 
-    console.log(`Generated HTML content (${htmlContent.length} characters)`);
-
-    // Generate PDF
-    console.log("Converting HTML to PDF...");
     const pdfBuffer = await pdfService.generatePDF(htmlContent);
 
     if (!pdfBuffer || pdfBuffer.length === 0) {
