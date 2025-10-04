@@ -278,7 +278,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
             ? data.step3.insuredEntities
                 .map(
                   (entity, index) => `
-              <div class="grid grid-cols-4 gap-2 mb-2">
+              <div class="grid grid-cols-3 gap-2 mb-2">
                 ${generateFieldHTML(
                   `Insured Entity ${index + 1}`,
                   entity.entity,
@@ -1119,7 +1119,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
   );
 };
 
-export const piProposalFormTemplate = (formData) => {
+export const accountantFormTemplate = (formData) => {
   const steps = Object.keys(formData).filter(
     (stepKey) => formData[stepKey] && Object.keys(formData[stepKey]).length > 0
   );
