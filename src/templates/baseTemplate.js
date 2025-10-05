@@ -68,7 +68,7 @@ export const generateTailwindHTML = (content) => {
                   width: 100%;
                   height: 100%;
                   background-image: url('${
-                    config.frontend.baseUrl
+                    config.server.serverUrl
                   }/src/assets/images/mainContent.png');
                   background-repeat: no-repeat;
                   background-position: center;
@@ -115,7 +115,7 @@ export const generateTailwindHTML = (content) => {
       <!-- Screen header (hidden in print) -->
       <div class="print:hidden text-center py-6 mb-8">
         <img src="${
-          config.frontend.baseUrl
+          config.server.serverUrl
         }/src/assets/images/mainContent.png" 
              class="w-[82px] h-auto mx-auto mb-4" alt="Logo" />
       </div>

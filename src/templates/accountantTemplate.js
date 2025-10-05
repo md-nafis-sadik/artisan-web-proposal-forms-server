@@ -13,7 +13,7 @@ const generateStep1HTML = (data, needsPageBreak = false) => {
     <div class="step-content">
       <div class="w-full flex flex-col items-center gap-4">
         <img src="${
-          config.frontend.baseUrl
+          config.server.serverUrl
         }/src/assets/images/pdfLogo.png" class="w-[119px] h-auto mx-auto" alt="Background Logo" />
         <div class="text-sm font-bold text-black-300 text-center w-full">
           Miscellaneous PI Proposal Form
