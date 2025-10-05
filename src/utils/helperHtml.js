@@ -74,12 +74,13 @@ export const generateYesNoHTML = (
   value,
   details = "",
   detailsLabel = "",
-  labelClass = ""
+  labelClass = "",
+  other = false
 ) => {
   return `
     <div class="flex flex-col gap-1 mb-2">
-      <div class="flex justify-between items-start gap-2">
-        <div class="text-[10px] font-semibold text-black-300 w-3/4 ${labelClass}">${label}</div>
+      <div class="flex ${other ? 'flex-col gap-1 items-start' : 'justify-between items-start gap-2'}">
+        <div class="text-[10px] font-semibold text-black-300 ${other ? 'w-full' : 'w-3/4'} ${labelClass}">${label}</div>
         <div class="flex gap-2">
         <div class="min-w-[90px] text-center px-4 py-1 text-[10px] rounded-[4px] ${
           value === "No"

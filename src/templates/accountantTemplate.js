@@ -8,7 +8,6 @@ import {
 } from "../utils/helperHtml.js";
 import { generateTailwindHTML } from "./baseTemplate.js";
 
-
 const generateStep1HTML = (data, needsPageBreak = false) => {
   const content = `
     <div class="step-content">
@@ -115,7 +114,6 @@ const generateStep1HTML = (data, needsPageBreak = false) => {
     needsPageBreak
   );
 };
-
 
 const generateStep2HTML = (data, needsPageBreak = false) => {
   const content = `
@@ -295,7 +293,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                 )
                 .join("")
             : `
-          <div class="grid grid-cols-4 gap-2 mb-2">
+          <div class="grid grid-cols-3 gap-2 mb-2">
             ${generateFieldHTML(
               "Insured Entity 1",
               "",
@@ -303,7 +301,6 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
             )}
             ${generateDateFieldHTML("Date Incorporated", "", "DD/MM/YYYY")}
             ${generateFieldHTML("ABN", "", "ABN")}
-            ${generateFieldHTML("Business Number", "", "Business Number")}
           </div>
         `
         }
@@ -314,7 +311,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
         <div class="text-xs font-semibold text-black-300 mb-3">
           2. Please provide responses to all of the below fields:
         </div>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-3 gap-2">
           ${generateFieldHTML(
             "Telephone Number",
             data.step3.telephoneNumber,
@@ -324,6 +321,16 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
             "Email Address",
             data.step3.emailAddress,
             "Enter Email Address"
+          )}
+          ${generateFieldHTML("Websites", data.step3.websites, "Enter Website")}
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-2">
+          ${generateFieldHTML("Address", data.step3.address, "Enter Address")}
+          ${generateFieldHTML("State", data.step3.state, "Enter State")}
+          ${generateFieldHTML(
+            "Post Code",
+            data.step3.postCode,
+            "Enter Post Code"
           )}
         </div>
       </div>
@@ -381,7 +388,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
       <!-- Section 4: Staff Numbers -->
       <div class="flex flex-col gap-1">
         <div class="text-xs font-semibold text-black-300 mb-3">
-          4. Principals, directors and staff with work status:
+          4. Number of Directors, Principal, Partners & Staff
         </div>
         <div class="space-y-3">
           <div>
@@ -395,6 +402,21 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
               ${generateFieldHTML(
                 "Part Time",
                 data.step3.directorsPartTime,
+                "Part Time"
+              )}
+            </div>
+          </div>
+          <div>
+            <div class="text-[10px] font-semibold text-black-300 mb-1">Qualified/Technical staff</div>
+            <div class="grid grid-cols-2 gap-2">
+              ${generateFieldHTML(
+                "Full time",
+                data.step3.qualifiedFullTime,
+                "Enter Full time"
+              )}
+              ${generateFieldHTML(
+                "Part Time",
+                data.step3.qualifiedPartTime,
                 "Part Time"
               )}
             </div>
@@ -430,166 +452,6 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Section 5: Activities -->
-      <div class="flex flex-col gap-1">
-        <div class="text-xs font-semibold text-black-300 mb-3">
-          5. Please list all professional services provided and allocate an approximate percentage of the Insureds income for each.
-        </div>
-        <div class="space-y-4">
-          <div>
-            <div class="text-[10px] font-semibold text-gray-700 mb-2">(i) Activities Performed (include all activities and services)</div>
-            ${
-              data.step3.activities && data.step3.activities.length > 0
-                ? data.step3.activities
-                    .map(
-                      (activity, index) => `
-                  <div class="grid grid-cols-2 gap-2 mb-2">
-                    ${generateFieldHTML(
-                      `Activity ${index + 1}`,
-                      activity.activity,
-                      "Enter Activities Performed"
-                    )}
-                    ${generateFieldHTML(
-                      "% Holdings",
-                      activity.percentage,
-                      "% Holdings"
-                    )}
-                  </div>
-                `
-                    )
-                    .join("")
-                : `
-              <div class="grid grid-cols-2 gap-2 mb-2">
-                ${generateFieldHTML(
-                  "Activity 1",
-                  "",
-                  "Enter Activities Performed"
-                )}
-                ${generateFieldHTML("% Holdings", "", "% Holdings")}
-              </div>
-            `
-            }
-          </div>
-          
-          <div class="flex flex-col gap-2">
-            ${generateYesNoHTML(
-              "(ii) Does the Insured anticipate any changes to the above Activities in the next 12 months?",
-              data.step3.anticipateChanges,
-              data.step3.anticipateChangesDetails,
-              "Please provide details"
-            )}
-          </div>
-          
-          <div class="flex flex-col gap-2">
-            ${generateYesNoHTML(
-              "(iii) Has the Insured performed any other professional service or activity other than described in 6 (i) above and for which cover may be required?",
-              data.step3.otherServices,
-              data.step3.otherServicesDetails,
-              "Please provide details"
-            )}
-          </div>
-          
-          <div class="flex flex-col gap-2">
-            ${generateYesNoHTML(
-              "(iv) Is cover required for professional services or activities which have been provided by a former subsidiary?",
-              data.step3.formerSubsidiary,
-              data.step3.formerSubsidiaryDetails,
-              "Please provide details"
-            )}
-          </div>
-        </div>
-      </div>
-
-      <!-- Section 6: Mergers -->
-      <div class="flex flex-col gap-1">
-        ${generateYesNoHTML(
-          "6. Has the Insured or any of its subsidiaries undertaken any mergers or acquisitions in the last five years?",
-          data.step3.mergers,
-          data.step3.mergersDetails,
-          "Please provide details",
-          "text-xs"
-        )}
-      </div>
-      
-      <!-- Section 7: Joint Ventures -->
-      <div class="flex flex-col gap-1">
-        ${generateYesNoHTML(
-          "7. Has the Insured or any of its subsidiaries been involved in any joint ventures in the last five years?",
-          data.step3.jointVentures,
-          data.step3.jointVenturesDetails,
-          "Please provide details",
-          "text-xs"
-        )}
-      </div>
-      
-      <!-- Section 8: Previous Business -->
-      <div class="flex flex-col gap-1">
-        ${generateYesNoHTML(
-          "8. Does the Insured require cover for any previous business including the previous business of any principal or director?",
-          data.step3.previousBusiness,
-          data.step3.previousBusinessDetails,
-          "Please provide details",
-          "text-xs"
-        )}
-      </div>
-      
-      <!-- Section 9: Licenses -->
-      <div class="flex flex-col gap-1">
-        ${generateYesNoHTML(
-          "9. Does the Insured hold any licence or accreditation which is required in order to provide professional services or activities for which cover is requested?",
-          data.step3.licenses,
-          data.step3.licensesDetails,
-          "Please provide details",
-          "text-xs"
-        )}
-      </div>
-      
-      <!-- Section 10: Overseas Representation -->
-      <div class="flex flex-col gap-1">
-        ${generateYesNoHTML(
-          "10. Does the Insured have any representation outside of Australia?",
-          data.step3.overseasRepresentation,
-          "",
-          "",
-          "text-xs"
-        )}
-        
-        ${
-          data.step3.overseasRepresentation === "Yes" &&
-          data.step3.overseasOffices
-            ? `
-          <div class="ml-4 mt-3 space-y-2">
-            <div class="text-[10px] font-semibold text-black-300">Overseas Office Details:</div>
-            ${data.step3.overseasOffices
-              .map(
-                (office, index) => `
-              <div class="grid grid-cols-4 gap-2 mb-2">
-                ${generateFieldHTML(
-                  `Country ${index + 1}`,
-                  office.country,
-                  "Enter Country"
-                )}
-                ${generateFieldHTML("Fees/Turnover", office.fees, "$")}
-                ${generateFieldHTML(
-                  "Number of staff",
-                  office.staff,
-                  "Number of staff"
-                )}
-                ${generateFieldHTML(
-                  "Number of offices",
-                  office.offices,
-                  "Number of offices"
-                )}
-              </div>
-            `
-              )
-              .join("")}
-          </div>
-        `
-            : ""
-        }
       </div>
 
       <div class="mt-6 w-full flex flex-col items-center gap-2 mb-3">
@@ -822,9 +684,9 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "text-xs"
                 )}
                             
-                            ${
-                              data.step4.subcontract === "Yes"
-                                ? `
+                ${
+                  data.step4.subcontract === "Yes"
+                  ? `
                   <div class="ml-4 mt-2 flex flex-col gap-2">
                     <div class="flex flex-col gap-1">
                       <div class="text-[10px] font-semibold text-black-300">(a) Please confirm the percentage of fees/turnover paid to subcontractors in the last 12 months?</div>
@@ -855,8 +717,8 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                       "",
                       ""
                     )}
-                                        </div>
-                                          `
+                    </div>
+                     `
                                 : ""
                             }
               </div>
@@ -1061,7 +923,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     <div class="w-1/2">
                       ${generateFieldHTML(
                         "",
-                        data.step7.signed,
+                        data.step9.signed,
                         "Provide Info..."
                       )}
                     </div>
@@ -1074,7 +936,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     <div class="w-1/2">
                       ${generateFieldHTML(
                         "",
-                        data.step7.nameOfPartner,
+                        data.step9.nameOfPartner,
                         "Provide Info..."
                       )}
                     </div>
@@ -1087,7 +949,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     <div class="w-1/2">
                       ${generateFieldHTML(
                         "",
-                        data.step7.onBehalfOf,
+                        data.step9.onBehalfOf,
                         "Provide Info..."
                       )}
                     </div>
@@ -1100,7 +962,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     <div class="w-1/2">
                       ${generateDateFieldHTML(
                         "",
-                        data.step7.declarationDate,
+                        data.step9.declarationDate,
                         "DD/MM/YYYY"
                       )}
                     </div>
