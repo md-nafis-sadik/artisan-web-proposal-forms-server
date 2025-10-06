@@ -9,6 +9,7 @@ import {
   generate6YesNoHTML,
   generate4YesNoHTML,
   generate6v2YesNoHTML,
+  generate6v3YesNoHTML,
 } from "../utils/helperHtml.js";
 import { generateTailwindHTML } from "./baseTemplate.js";
 
@@ -1080,10 +1081,12 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
 
               <!-- Section 18: Pending Claims -->
               <div class="flex flex-col gap-2">
-                ${generateYesNoHTML(
+                ${generate6v3YesNoHTML(
                   "23. Has there ever been or is there any pending claims against the Insured, its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors or employees for actual or alleged breaches of professional duties or services for which this policy relates?",
-                  data.step8.pendingClaims,
-                  data.step8.claimsDetails,
+                  {
+                    value0: data.step8.pendingClaims,
+                    value1: data.step8.claimsDetails,
+                  },
                   "Please provide details",
                   "text-xs"
                 )}

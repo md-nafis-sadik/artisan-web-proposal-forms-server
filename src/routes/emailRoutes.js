@@ -7,7 +7,7 @@ const emailService = new EmailService();
 
 router.post("/send-email", async (req, res) => {
   try {
-    const { to, from, subject, body, pdfBase64, filename } = req.body;
+    const { to, from, subject, name, body, pdfBase64, filename } = req.body;
 
     if (!pdfBase64 || !to || !subject || !body) {
       return res.status(400).json({
@@ -27,13 +27,14 @@ router.post("/send-email", async (req, res) => {
       from,
       subject,
       body,
+      name,
       pdfBase64,
       filename,
     });
 
   } catch (error) {
     console.error("❌ Error in email endpoint:", error);
-    
+
     if (!res.headersSent) {
       res.status(500).json({
         success: false,

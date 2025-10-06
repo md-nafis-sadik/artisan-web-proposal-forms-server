@@ -50,7 +50,7 @@ class EmailService {
   /**
    * Send an email with optional PDF attachment
    */
-  async sendEmail({ to, from, subject, body, pdfBase64, filename }) {
+  async sendEmail({ to, from, subject, name, body, pdfBase64, filename }) {
     if (!pdfBase64 || !to || !subject || !body) {
       throw new Error("Missing required fields: to, subject, body, pdfBase64");
     }
@@ -58,24 +58,42 @@ class EmailService {
     console.time("Prepare Mail Options");
 
     const htmlContent = `
-      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-        <h2 style="color: #333;">New Form Submission</h2>
-        <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
-          <pre style="white-space: pre-wrap; font-family: monospace; font-size: 12px;">${body}</pre>
+    <div>
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+              <div style="background: linear-gradient(90deg, #ED09FE 0%, #189AFE 100%); height: 4px;"></div>
+              <div style="background: white; padding: 40px 30px; display: table; width: 100%; box-sizing: border-box;">
+                  <div style="display: table-cell; vertical-align: middle; width: 200px;">
+                      <img src="https://artisan.quickdraw.tech/assets/pdfLogo.png" class="w-[140px] h-auto" alt="Background Logo" />
+                  </div>
+                  <div style="display: table-cell; vertical-align: middle; text-align: right; padding-left: 20px;">
+                      <h1 style="margin: 0 0 5px 0; font-size: 24px; font-weight: bold; color: #333;">Successfully Submitted
+                      </h1>
+                      <p style="margin: 0; font-size: 14px; color: #666;">Your proposal form has been submitted</p>
+                  </div>
+              </div>
+              <div style="background: white; padding: 30px; border-top: 1px solid #e0e0e0;">
+                  <h2 style="margin: 0 0 15px 0; font-size: 18px; color: #333;">Hi ${name}!</h2>
+                  <p style="margin: 0 0 10px 0; font-size: 14px; color: #666; line-height: 1.6;">
+                      Thanks for completing the proposal form!
+                  </p>
+                  <p style="margin: 0; font-size: 14px; color: #666; line-height: 1.6;">
+                      Our team has received and we will be in touch shortly!
+                  </p>
+              </div>
+              
+          </div>
+          <div style="margin-top: 40px; padding: 20px; border-top: 1px solid #e0e0e0; color: #666; font-size: 12px;">
+                  <p style="margin-top: 20px; color: #666; font-size: 14px;">
+                      <strong>Note:</strong> Complete form details are attached as a PDF.
+                  </p>
+                  <p style="margin: 0; line-height: 1.4;">
+                      <strong>DO NOT REPLY</strong> to this email address. This mailbox is not monitored.<br>
+                      For all queries, please contact:
+                      <a href="mailto:quotes@artisanuw.com.au"
+                          style="color: #189AFE; text-decoration: none;">quotes@artisanuw.com.au</a>
+                  </p>
+              </div>
         </div>
-        <p style="margin-top: 20px; color: #666;">
-          <strong>Note:</strong> Complete form details are attached as a PDF.
-        </p>
-
-        <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ddd; color: #666; font-size: 12px;">
-          <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
-          <p style="margin: 0; line-height: 1.4;">
-            <strong>DO NOT REPLY</strong> to this email address. This mailbox is not monitored.<br>
-            For all queries, please contact:
-            <a href="mailto:quotes@artisanuw.com.au" style="color: #0066cc;">quotes@artisanuw.com.au</a>
-          </p>
-        </div>
-      </div>
     `;
 
     const payload = {
@@ -91,7 +109,7 @@ class EmailService {
         attachments: [
           {
             "@odata.type": "#microsoft.graph.fileAttachment",
-            name: filename || "miscellaneous-pi-proposal-form.pdf",
+            name: filename || "proposal-form.pdf",
             contentType: "application/pdf",
             contentBytes: pdfBase64,
           },

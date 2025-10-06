@@ -267,6 +267,74 @@ export const generate6v2YesNoHTML = (label, data, labelClass = "") => {
   `;
 };
 
+export const generate6v3YesNoHTML = (label, data, labelClass = "") => {
+  return `
+    <div class="flex flex-col gap-1 mb-2">
+      <div class="flex justify-between items-start gap-2"
+      }">
+        <div class="text-xs font-semibold text-black-300
+          w-3/4
+         ${labelClass}">${label}</div>
+        <div class="flex gap-2">
+        <div class="min-w-[90px] text-center px-4 py-1 text-[10px] rounded-[4px] ${
+          data.value0 === "No"
+            ? "bg-gradient-to-r from-[#ED09FE] to-[#189AFE] text-white"
+            : "bg-gray-200 text-gray-600"
+        }">No</div>
+              <div class="min-w-[90px] text-center px-4 py-1 text-[10px] rounded-[4px] ${
+                data.value0 === "Yes"
+                  ? "bg-gradient-to-r from-[#ED09FE] to-[#189AFE] text-white"
+                  : "bg-gray-200 text-gray-600"
+              }">Yes</div>
+          
+        </div>
+      </div>
+      ${
+        data.value0 === "Yes"
+          ? `
+      <div class="mt-2">
+        <div class="flex flex-col gap-1">
+                    ${
+                      data.value1 &&
+                      data.value1
+                        .map(
+                          (value1, index) => `
+                          <div class="grid grid-cols-4 gap-2 mb-2">
+                          ${generateDateFieldHTML(
+                            "Date of Claim or Loss",
+                            data.claimDate,
+                            "DD/MM/YYYY"
+                          )}
+                            ${generateFieldHTML(
+                              `Details of Each Claim or Loss`,
+                              value1.claimDetails,
+                              "Details here"
+                            )}
+                          ${generateFieldHTML(
+                            "Cost of Claim Insured",
+                            value1.claimCost,
+                            "$"
+                          )}
+                          ${generateFieldHTML(
+                            "Estimated Outstanding Loss",
+                            value1.claimLoss,
+                            "$"
+                          )}
+                        </div>
+                      `
+                        )
+                        .join("")
+                    }
+        </div>
+    </div>
+
+      `
+          : ""
+      }
+    </div>
+  `;
+};
+
 export const generate4YesNoHTML = (label, data, labelClass = "") => {
   return `
     <div class="flex flex-col gap-1 mb-2">
