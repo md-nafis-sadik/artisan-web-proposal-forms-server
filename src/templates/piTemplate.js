@@ -756,35 +756,27 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                       .map(
                         (project, index) => `
                             <div class="grid grid-cols-3 gap-2 mb-2">
+                                ${generateFieldHTML(
+                                  `Project/Contract Type ${index + 1}`,
+                                  project.description,
+                                  "Project/Contract Type"
+                                )}
                                     ${generateFieldHTML(
-                                      `Project/Contract Type ${index + 1}`,
-                                      project.description,
-                                      "Project/Contract Type"
-                                    )}
-                                        ${generateFieldHTML(
                                           "Project/Contract Value",
-                                          project.contractValue,
-                                          "$"
-                                        )}
-                                        ${generateFieldHTML(
-                                          "% of Total Fees/Turnover",
-                                          project.percentage,
-                                          "%"
-                                        )}
-                                        </div>
-                                          `
+                                      project.contractValue,
+                                      "$"
+                                    )}
+                                    ${generateFieldHTML(
+                                      "% of Total Fees/Turnover",
+                                      project.percentage,
+                                      "%"
+                                    )}
+                              </div>
+                              `
                       )
                       .join("")
                   }
                   
-                  <div class="grid grid-cols-3 gap-2 mb-2">
-                    ${generateFieldHTML(
-                      "Scope of Services Provided",
-                      "",
-                      "Scope of Services Provided",
-                      "col-span-full"
-                    )}
-                  </div>
                 </div>
 
               <!-- Section 13: Manufacturing Questions -->
