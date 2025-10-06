@@ -16,9 +16,7 @@ const generateStep1HTML = (data, needsPageBreak = false) => {
   const content = `
     <div class="step-content">
       <div class="w-full flex flex-col items-center gap-4">
-        <img src="${
-          config.server.serverUrl
-        }/src/assets/images/pdfLogo.png" class="w-[119px] h-auto mx-auto" alt="Background Logo" />
+        <img src="https://artisan.quickdraw.tech/assets/pdfLogo.png" class="w-[119px] h-auto mx-auto" alt="Background Logo" />
         <div class="text-sm font-bold text-black-300 text-center w-full">
           Miscellaneous PI Proposal Form
         </div>
@@ -241,7 +239,7 @@ const generateStep2HTML = (data, needsPageBreak = false) => {
             </div>
           </div>
 
- 
+
     </div>
   `;
 
@@ -276,7 +274,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
         <div class="text-xs font-semibold text-black-300 mb-3">
           1. Please provide responses to all of the below fields:
         </div>
-        
+
         ${
           data.step3.insuredEntities && data.step3.insuredEntities.length > 0
             ? data.step3.insuredEntities
@@ -488,7 +486,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                 <div class="text-xs font-semibold text-black-300">
                   5. Please provide gross Fees/Turnover, including gross fees paid to sub-contractors.
                 </div>
-                
+
                 <!-- Australia -->
                 <div class="flex flex-col gap-1 mb-2">
                   <div class="text-[10px] font-semibold text-black-300">Australia</div>
@@ -510,7 +508,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     )}
                   </div>
                 </div>
-                
+
                 <!-- Excluding (USA/Canada) -->
                 <div class="flex flex-col gap-1 mb-2">
                   <div class="text-[10px] font-semibold text-black-300">Excluding (USA/Canada)</div>
@@ -532,7 +530,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     )}
                   </div>
                 </div>
-                
+
                 <!-- Including (USA/Canada) -->
                 <div class="flex flex-col gap-1 mb-2">
                   <div class="text-[10px] font-semibold text-black-300">Including (USA/Canada)</div>
@@ -554,7 +552,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     )}
                   </div>
                 </div>
-                
+
                 <!-- Total -->
                 <div class="flex flex-col gap-1">
                   <div class="text-[10px] font-semibold text-gray-700">Total</div>
@@ -583,10 +581,10 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                 <div class="text-xs font-semibold text-black-300">
                   6. Please provide us
                 </div>
-                
+
                 <div class="flex flex-col gap-1 mb-2">
                   <div class="text-[10px] font-semibold text-black-300">(i) The 3 largest Projects/Contracts in the last 5 years (including current).</div>
-                  
+
                   ${
                     data.step4.projects &&
                     data.step4.projects
@@ -613,14 +611,14 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                       )
                       .join("")
                   }
-                </div>                                
+                </div>
               </div>
 
               <div class="flex flex-col gap-2">
                 <div class="text-xs font-semibold text-black-300">
                   7. What was the proposer’s largest fee earned from one client and the average fee per client in the last year?
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-2 mb-2">
                   ${generateFieldHTML(
                     "Largest",
@@ -640,7 +638,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                 <div class="text-xs font-semibold text-black-300">
                   8. Please state the percentage, split by revenue, of the following activities:
                 </div>
-                
+
                 ${generate2FieldYesNoHTML("Accounts Preparation/Book Keeping", {
                   value1: data.step4.accountsPreparationLast12,
                   value2: data.step4.accountsPreparationNext12,
@@ -992,7 +990,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                 Part C – Insurance Details
           </div>
         </div>
-        
+
 
           <div class="py-4">
             <div class="w-full flex flex-col gap-4">
@@ -1019,21 +1017,21 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                 <div class="text-xs font-semibold text-black-300">
                   21. Stamp Duty Declaration – Please provide a percentage breakdown of fees/turnover by location as follow8
                 </div>
-                
+
                 <!-- First row of states -->
                 <div class="grid grid-cols-3 gap-2 mb-2">
                   ${generateFieldHTML("NSW", data.step7.nsw, "0%")}
                   ${generateFieldHTML("VIC", data.step7.vic, "0%")}
                   ${generateFieldHTML("QLD", data.step7.qld, "0%")}
                 </div>
-                
+
                 <!-- Second row of states -->
                 <div class="grid grid-cols-3 gap-2 mb-2">
                   ${generateFieldHTML("SA", data.step7.sa, "0%")}
                   ${generateFieldHTML("WA", data.step7.wa, "0%")}
                   ${generateFieldHTML("ACT", data.step7.act, "0%")}
                 </div>
-                
+
                 <!-- Third row of states -->
                 <div class="grid grid-cols-3 gap-2">
                   ${generateFieldHTML("TAS", data.step7.tas, "0%")}
@@ -1154,19 +1152,19 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                 <div class="text-xs font-semibold text-black-300">
                   Please Note:
                 </div>
-                
+
                 <div class="text-[9px] text-gray-700 mb-2">
                   Signing the Declaration does not bind either the proposed Insured or the Insurer to execute this or any insurance whatsoever.
                 </div>
-                
+
                 <div class="text-[9px] text-gray-700 mb-2">
                   By signing this Declaration, the Insured declares that all necessary inquiries into the accuracy of the responses given in this proposal have been made and the Insured confirms that the statements and particulars given in this proposal are true, accurate and complete and that no material facts have been omitted, misstated or suppressed. The Insured agrees that if any of the information changes between the date of this proposal and the inception date of the insurance to which this proposal relates, the Insured will give immediate notice thereof to the Artisan Underwriting Pty Ltd (Artisan).
                 </div>
-                
+
                 <div class="text-[9px] text-gray-700 mb-2">
                   The Insured acknowledges receipt of the Important Notice, Privacy Notice and Duty of Disclosure information contained in this proposal and confirms they have read and understood the content of them. The Insured consents to Artisan Underwriting Pty Ltd collecting, using and disclosing personal information as set out in Artisan's Privacy Notice in this proposal and the policy. If the Insured has provided or will provide information to Artisan about any other individuals, the Insured confirms that they are authorised to disclose the other individual's personal information to Artisan and give the above consent on their behalf.
                 </div>
-                
+
                 <div class="text-[9px] text-gray-700 mb-4">
                   The signatory below confirms that they are authorised by the Insured (and its subsidiaries, previous businesses, partners/principals/directors if applicable) to complete this proposal form and to accept quotation terms for this insurance on behalf of the Insureds (and its subsidiaries, previous businesses, partners/principals/directors) behalf.
                 </div>
@@ -1186,7 +1184,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="flex flex-col gap-2">
                   <div class="flex justify-between items-center">
                     <div class="text-[10px] font-semibold text-gray-700 w-1/2">Name of Partner(s) or Director(s)</div>
@@ -1199,7 +1197,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="flex flex-col gap-2">
                   <div class="flex justify-between items-center">
                     <div class="text-[10px] font-semibold text-gray-700 w-1/2">On behalf of</div>
@@ -1212,7 +1210,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="flex flex-col gap-2">
                   <div class="flex justify-between items-center">
                     <div class="text-[10px] font-semibold text-gray-700 w-1/2">Date</div>
@@ -1226,7 +1224,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   </div>
                 </div>
               </div>
-       
+
           </div>
     </div>
   `;

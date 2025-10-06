@@ -3,7 +3,6 @@ import "./src/config/env.js";
 import express from "express";
 import cors from "cors";
 import path from "path";
-import { fileURLToPath } from "url";
 
 import config from "./src/config/index.js";
 
@@ -14,23 +13,19 @@ import healthRoutes from "./src/routes/healthRoutes.js";
 const app = express();
 const port = config.server.port;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 app.use(
   cors({
     origin: config.server.corsOrigin,
   })
 );
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use(express.json({ limit: "100mb" }));
+app.use(express.urlencoded({ extended: true, limit: "100mb" }));
 
-app.use("/src", express.static(path.join(__dirname, "src")));
+app.use("/assets", express.static(path.join(process.cwd(), "public")));
 
 app.use("/api", pdfRoutes);
 app.use("/api", emailRoutes);
 app.use("/api", healthRoutes);
-
 
 app.get("/", (req, res) => {
   res.json({

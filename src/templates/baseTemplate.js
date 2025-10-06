@@ -42,9 +42,9 @@ export const generateTailwindHTML = (content) => {
           @page {
               size: A4;
               margin: 8mm;
-              
+
           }
-          
+
           /* Page template that repeats on every page */
           @media print {
               body {
@@ -52,13 +52,13 @@ export const generateTailwindHTML = (content) => {
                   -webkit-print-color-adjust: exact;
                   print-color-adjust: exact;
               }
-              
-              .page-break { 
-                  page-break-before: always; 
+
+              .page-break {
+                  page-break-before: always;
                   break-before: page;
               }
-              
-              
+
+
               /* Page template background and border */
               body::before {
                   content: "";
@@ -67,15 +67,13 @@ export const generateTailwindHTML = (content) => {
                   left: 0;
                   width: 100%;
                   height: 100%;
-                  background-image: url('${
-                    config.server.serverUrl
-                  }/src/assets/images/mainContent.png');
+                  background-image: url('https://artisan.quickdraw.tech/assets/mainContent.png');
                   background-repeat: no-repeat;
                   background-position: center;
                   background-size: 720px auto;
                   z-index: -2;
               }
-              
+
               body::after {
                   content: "";
                   position: fixed;
@@ -85,9 +83,9 @@ export const generateTailwindHTML = (content) => {
                   bottom: 0mm;
                   z-index: -1;
               }
-              
+
           }
-          
+
           /* Screen styles */
           .step-content {
               max-width: 800px;
@@ -114,9 +112,7 @@ export const generateTailwindHTML = (content) => {
   <body class="bg-white font-sans text-sm leading-relaxed">
       <!-- Screen header (hidden in print) -->
       <div class="print:hidden text-center py-6 mb-8">
-        <img src="${
-          config.server.serverUrl
-        }/src/assets/images/mainContent.png" 
+        <img src="https://artisan.quickdraw.tech/assets/mainContent.png"
              class="w-[82px] h-auto mx-auto mb-4" alt="Logo" />
       </div>
 
