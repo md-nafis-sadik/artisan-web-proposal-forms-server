@@ -61,22 +61,27 @@ class EmailService {
     <div>
       <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto;">
               <div style="background: linear-gradient(90deg, #ED09FE 0%, #189AFE 100%); height: 4px;"></div>
-              <div style="background: white; padding: 40px 30px; display: table; width: 100%; box-sizing: border-box;">
+              <div style="background: white; padding: 30px 28px 30px 24px; display: table; width: 100%; box-sizing: border-box;">
                   <div style="display: table-cell; vertical-align: middle; width: 200px;">
-                      <img src="https://artisan.quickdraw.tech/assets/pdfLogo.png" class="w-[140px] h-auto" alt="Background Logo" />
+                      <img 
+                        src="https://artisan.quickdraw.tech/assets/pdfLogo.png"
+                        alt="Artisan Logo"
+                        style="width: 140px; height: auto; max-width: 100%; display: block; object-fit: contain;"
+                      />
+
                   </div>
                   <div style="display: table-cell; vertical-align: middle; text-align: right; padding-left: 20px;">
-                      <h1 style="margin: 0 0 5px 0; font-size: 24px; font-weight: bold; color: #333;">Successfully Submitted
+                      <h1 style="margin: 0 0 5px 0; font-size: 20px; font-weight: bold; color: #333;">Successfully Submitted
                       </h1>
                       <p style="margin: 0; font-size: 14px; color: #666;">Your proposal form has been submitted</p>
                   </div>
               </div>
-              <div style="background: white; padding: 30px; border-top: 1px solid #e0e0e0;">
-                  <h2 style="margin: 0 0 15px 0; font-size: 18px; color: #333;">Hi ${name}!</h2>
-                  <p style="margin: 0 0 10px 0; font-size: 14px; color: #666; line-height: 1.6;">
+              <div style="background: white; padding: 30px 28px; border-top: 1px solid #e0e0e0;">
+                  <h2 style="margin: 0 0 8px 0; font-size: 14px; color: #333;">Hi ${name}!</h2>
+                  <p style="margin: 0 0 8px 0; font-size: 12px; color: #666; line-height: 1.6;">
                       Thanks for completing the proposal form!
                   </p>
-                  <p style="margin: 0; font-size: 14px; color: #666; line-height: 1.6;">
+                  <p style="margin: 0; font-size: 12px; color: #666; line-height: 1.6;">
                       Our team has received and we will be in touch shortly!
                   </p>
               </div>

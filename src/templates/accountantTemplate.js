@@ -1177,21 +1177,21 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
               <div class="flex flex-col gap-3.5 p-4 border border-gray-300 rounded-lg avoid-break">
                 <div class="flex flex-col gap-2">
                   <div class="flex justify-between items-center">
-                    <div class="text-[10px] font-semibold text-gray-700 w-1/2">Signed</div>
-                    <div class="w-1/2">
-                      ${generateFieldHTML(
-                        "",
-                        data.step9.signed,
-                        "Provide Info..."
-                      )}
+                    <div class="text-[10px] font-semibold text-gray-700 w-2/3">Signed</div>
+                    <div class="w-1/3">
+
+                    <div class="border border-gray-300 rounded-lg px-3 py-2 h-[32px] flex items-center justify-center text-[10px] placeholder:text-[10px]">
+                      <img src="${data.step9.signed}" alt="Signature" class="max-h-[30px]"/>
+                    </div>
+
                     </div>
                   </div>
                 </div>
 
                 <div class="flex flex-col gap-2">
                   <div class="flex justify-between items-center">
-                    <div class="text-[10px] font-semibold text-gray-700 w-1/2">Name of Partner(s) or Director(s)</div>
-                    <div class="w-1/2">
+                    <div class="text-[10px] font-semibold text-gray-700 w-2/3">Name of Partner(s) or Director(s)</div>
+                    <div class="w-1/3">
                       ${generateFieldHTML(
                         "",
                         data.step9.nameOfPartner,
@@ -1203,8 +1203,8 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
 
                 <div class="flex flex-col gap-2">
                   <div class="flex justify-between items-center">
-                    <div class="text-[10px] font-semibold text-gray-700 w-1/2">On behalf of</div>
-                    <div class="w-1/2">
+                    <div class="text-[10px] font-semibold text-gray-700 w-2/3">On behalf of</div>
+                    <div class="w-1/3">
                       ${generateFieldHTML(
                         "",
                         data.step9.onBehalfOf,
@@ -1216,8 +1216,8 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
 
                 <div class="flex flex-col gap-2">
                   <div class="flex justify-between items-center">
-                    <div class="text-[10px] font-semibold text-gray-700 w-1/2">Date</div>
-                    <div class="w-1/2">
+                    <div class="text-[10px] font-semibold text-gray-700 w-2/3">Date</div>
+                    <div class="w-1/3">
                       ${generateDateFieldHTML(
                         "",
                         data.step9.declarationDate,
