@@ -302,7 +302,7 @@ export const generate6v3YesNoHTML = (label, data, labelClass = "") => {
                           <div class="grid grid-cols-4 gap-2 mb-2">
                           ${generateDateFieldHTML(
                             "Date of Claim or Loss",
-                            data.claimDate,
+                            value1.claimDate,
                             "DD/MM/YYYY"
                           )}
                             ${generateFieldHTML(
@@ -361,27 +361,28 @@ export const generate4YesNoHTML = (label, data, labelClass = "") => {
         data.value0 === "Yes"
           ? `
       <div class="mt-2">
-        <div class="grid grid-cols-2 gap-2">
-                    ${generateFieldHTML(
-                      "Name subsidiary",
-                      data.value1,
-                      "Name subsidiary"
-                    )}
-                    ${generateFieldHTML(
-                      "Date ceased to be a subsidiary",
-                      data.value2,
-                      "Date ceased to be a subsidiary"
-                    )}
-                    ${generateFieldHTML(
-                      "Name subsidiary",
-                      data.value3,
-                      "Name subsidiary"
-                    )}
-                    ${generateFieldHTML(
-                      "Date ceased to be a subsidiary",
-                      data.value4,
-                      "Date ceased to be a subsidiary"
-                    )}
+        <div class="flex flex-col gap-2">
+                    ${
+                      data.value1 &&
+                      data.value1
+                        .map(
+                          (value1, index) => `
+                          <div class="grid grid-cols-2 gap-2 mb-2">
+                          ${generateFieldHTML(
+                            "Name subsidiary",
+                            value1.subsidiaryName,
+                            "Name subsidiary"
+                          )}
+                            ${generateFieldHTML(
+                              `Date ceased to be a subsidiary`,
+                              value1.subsidiaryCeasedDate,
+                              "Date ceased to be a subsidiary"
+                            )}
+                        </div>
+                      `
+                        )
+                        .join("")
+                    }
         </div>
     </div>
 

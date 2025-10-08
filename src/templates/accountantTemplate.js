@@ -838,10 +838,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "11. Has the Insured performed any other professional service or activity other than described in Q6 or Q8 above and for which cover may be required?",
                   {
                     value0: data.step5.otherProfessionalService,
-                    value1: data.step5.subsidiaryName1,
-                    value2: data.step5.subsidiaryCeasedDate1,
-                    value3: data.step5.subsidiaryName2,
-                    value4: data.step5.subsidiaryCeasedDate2,
+                    value1: data.step5.otherProfessionalServiceDetails,
                   },
                   "Please provide details",
                   "text-xs"
@@ -1181,7 +1178,9 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     <div class="w-1/3">
 
                     <div class="border border-gray-300 rounded-lg px-3 py-2 h-[32px] flex items-center justify-center text-[10px] placeholder:text-[10px]">
-                      <img src="${data.step9.signed}" alt="Signature" class="max-h-[30px]"/>
+                      <img src="${
+                        data.step9.signed
+                      }" alt="Signature" class="max-h-[30px]"/>
                     </div>
 
                     </div>
