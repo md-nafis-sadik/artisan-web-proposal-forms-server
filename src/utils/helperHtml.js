@@ -16,7 +16,7 @@ export const generateFieldHTML = (
 
   return `
     <div class="avoid-break ${extraClasses}">
-        <label class="block text-[10px] text-black-300 mb-1">
+        <label class="block text-[10px] text-black-300 mb-1 truncate">
             ${label}
         </label>
         <div class="border border-gray-300 rounded-lg px-3 py-2 h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
@@ -67,6 +67,103 @@ export const generateDateFieldHTML = (label, timestamp, placeholder = "") => {
         </div>
     </div>
   `;
+};
+
+const generateDynamicRows = (fieldConfigs, dataArgs) => {
+  if (!fieldConfigs) return "";
+  
+  if (!dataArgs || dataArgs.length === 0) return "";
+  
+  const normalizedConfigs = Array.isArray(fieldConfigs) ? fieldConfigs : [fieldConfigs];
+  
+  const normalizedData = parseDataArguments(dataArgs, normalizedConfigs.length);
+  
+  return normalizedData
+    .map((rowValues) => {
+      const fieldHTMLArray = generateFieldsHTML(normalizedConfigs, rowValues);
+      
+      const gridClass = getGridClass(fieldHTMLArray.length);
+      
+      return `
+        <div class="${gridClass} gap-2 mb-2">
+          ${fieldHTMLArray.join("")}
+        </div>
+      `;
+    })
+    .join("");
+};
+
+const parseDataArguments = (dataArgs, fieldCount) => {
+  // If first argument is an array, treat it as the main data source
+  if (dataArgs.length === 1 && Array.isArray(dataArgs[0])) {
+    const data = dataArgs[0];
+    
+    // If it's an array of objects (like form data), return it directly
+    if (data.length > 0 && typeof data[0] === 'object' && !Array.isArray(data[0])) {
+      return data;
+    }
+
+    // If it's an array of arrays, return it directly
+    if (Array.isArray(data[0])) {
+      return data;
+    }
+    
+    // If it's a simple array that matches field count, wrap it
+    if (data.length === fieldCount) {
+      return [data];
+    }
+    
+    // Otherwise return as single row
+    return [data];
+  }
+  
+  // Handle multiple arguments
+  if (dataArgs.length > 0 && dataArgs.length <= 4) {
+    const allPrimitive = dataArgs.every(arg => !Array.isArray(arg) && typeof arg !== 'object');
+    
+    if (allPrimitive) {
+      return [dataArgs];
+    }
+    
+    return dataArgs.map(arg => Array.isArray(arg) ? arg : [arg]);
+  }
+  
+  return [];
+};
+
+const generateFieldsHTML = (fieldConfigs, rowValues) => {
+  const fieldHTMLArray = [];
+  
+  fieldConfigs.forEach((field, index) => {
+    let value;
+    
+    // If rowValues is an object and field has a fieldName property, use that
+    if (typeof rowValues === 'object' && !Array.isArray(rowValues) && field.fieldName) {
+      value = rowValues[field.fieldName];
+    } else {
+      // Otherwise use index-based access
+      value = Array.isArray(rowValues) ? rowValues[index] : rowValues;
+    }
+    
+    const html = field.type === "date" 
+      ? generateDateFieldHTML(field.label, value, field.placeholder || "")
+      : generateFieldHTML(field.label, value, field.placeholder || "");
+    
+    fieldHTMLArray.push(html);
+  });
+  
+  return fieldHTMLArray;
+};
+
+const getGridClass = (fieldCount) => {
+  const gridClasses = {
+    1: "grid grid-cols-1",
+    2: "grid grid-cols-2",
+    3: "grid grid-cols-3",
+    4: "grid grid-cols-4"
+  };
+  
+  return gridClasses[fieldCount] || "grid grid-cols-1";
 };
 
 export const generateYesNoHTML = (
@@ -386,6 +483,45 @@ export const generate4YesNoHTML = (label, data, labelClass = "") => {
         </div>
     </div>
 
+      `
+          : ""
+      }
+    </div>
+  `;
+};
+
+export const generateDynamicYesNoHTML = (
+  label, 
+  config,  // { value0: "Yes/No", value1: field config or array of field configs }
+  ...dataArgs  // Can be array OR individual values (data1, data2, data3, data4)
+) => {
+  return `
+    <div class="flex flex-col gap-1 mb-2">
+      <div class="flex justify-between items-start gap-2">
+        <div class="text-xs font-semibold text-black-300 w-3/4 ${config.labelClass || ""}">
+          ${label}
+        </div>
+        <div class="flex gap-2">
+          <div class="min-w-[90px] text-center px-4 py-1 text-[10px] rounded-[4px] ${
+            config.value0 === "No"
+              ? "bg-gradient-to-r from-[#ED09FE] to-[#189AFE] text-white"
+              : "bg-gray-200 text-gray-600"
+          }">No</div>
+          <div class="min-w-[90px] text-center px-4 py-1 text-[10px] rounded-[4px] ${
+            config.value0 === "Yes"
+              ? "bg-gradient-to-r from-[#ED09FE] to-[#189AFE] text-white"
+              : "bg-gray-200 text-gray-600"
+          }">Yes</div>
+        </div>
+      </div>
+      ${
+        config.value0 === "Yes"
+          ? `
+      <div class="mt-2">
+        <div class="flex flex-col gap-1">
+          ${generateDynamicRows(config.value1, dataArgs)}
+        </div>
+      </div>
       `
           : ""
       }

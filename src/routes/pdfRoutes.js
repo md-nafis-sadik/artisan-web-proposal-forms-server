@@ -3,16 +3,16 @@ import pdfService from "../services/pdfService.js";
 import { generateTailwindHTML } from "../templates/templateManager.js";
 import { piProposalFormTemplate } from "../templates/piTemplate.js";
 import { accountantFormTemplate } from "../templates/accountantTemplate.js";
+import { techConsultFormTemplate } from "../templates/technConsultTemplate.js";
 
 const router = express.Router();
-
 
 router.post("/generate-pdf", async (req, res) => {
   try {
     console.log("PDF generation request received");
 
     const { formData, type } = req.body;
-    
+
     if (!formData) {
       return res.status(400).json({
         success: false,
@@ -26,6 +26,8 @@ router.post("/generate-pdf", async (req, res) => {
       htmlContent = piProposalFormTemplate(formData);
     } else if (type === "accountant") {
       htmlContent = accountantFormTemplate(formData);
+    } else if (type === "techConsult") {
+      htmlContent = techConsultFormTemplate(formData);
     }
 
     if (!htmlContent || htmlContent.length === 0) {
@@ -46,12 +48,14 @@ router.post("/generate-pdf", async (req, res) => {
 
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Length", pdfBuffer.length);
-    res.setHeader("Content-Disposition", 'attachment; filename="proposal-form.pdf"');
-    
-    res.send(pdfBuffer);
-    
-    console.log("PDF generated and sent successfully");
+    res.setHeader(
+      "Content-Disposition",
+      'attachment; filename="proposal-form.pdf"'
+    );
 
+    res.send(pdfBuffer);
+
+    console.log("PDF generated and sent successfully");
   } catch (error) {
     console.error("Error in PDF generation:", error);
     res.status(500).json({
@@ -61,7 +65,6 @@ router.post("/generate-pdf", async (req, res) => {
     });
   }
 });
-
 
 router.get("/test-pdf", async (req, res) => {
   try {
@@ -81,8 +84,7 @@ router.get("/test-pdf", async (req, res) => {
         subrogation: true,
         privacyNotice: true,
       },
-      step2: {
-      },
+      step2: {},
     };
 
     const htmlContent = generateTailwindHTML(testData);
@@ -90,12 +92,14 @@ router.get("/test-pdf", async (req, res) => {
 
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Length", pdfBuffer.length);
-    res.setHeader("Content-Disposition", 'attachment; filename="test-proposal.pdf"');
-    
-    res.send(pdfBuffer);
-    
-    console.log("Test PDF generated successfully");
+    res.setHeader(
+      "Content-Disposition",
+      'attachment; filename="test-proposal.pdf"'
+    );
 
+    res.send(pdfBuffer);
+
+    console.log("Test PDF generated successfully");
   } catch (error) {
     console.error("Error in test PDF generation:", error);
     res.status(500).json({
