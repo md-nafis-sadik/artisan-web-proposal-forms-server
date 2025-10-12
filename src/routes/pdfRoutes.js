@@ -4,6 +4,7 @@ import { generateTailwindHTML } from "../templates/templateManager.js";
 import { piProposalFormTemplate } from "../templates/piTemplate.js";
 import { accountantFormTemplate } from "../templates/accountantTemplate.js";
 import { techConsultFormTemplate } from "../templates/technConsultTemplate.js";
+import { recruitLabourFormTemplate } from "../templates/recruitLabourTemplate.js";
 
 const router = express.Router();
 
@@ -28,6 +29,8 @@ router.post("/generate-pdf", async (req, res) => {
       htmlContent = accountantFormTemplate(formData);
     } else if (type === "techConsult") {
       htmlContent = techConsultFormTemplate(formData);
+    } else if (type === "recruitLabour") {
+      htmlContent = recruitLabourFormTemplate(formData);
     }
 
     if (!htmlContent || htmlContent.length === 0) {

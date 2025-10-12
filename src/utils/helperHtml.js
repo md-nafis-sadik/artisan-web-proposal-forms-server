@@ -9,14 +9,15 @@ export const generateFieldHTML = (
   label,
   value,
   placeholder = "",
-  extraClasses = ""
+  extraClasses = "",
+  labelClass = ""
 ) => {
   const displayValue = formatValue(value);
   const isEmpty = !displayValue;
 
   return `
     <div class="avoid-break ${extraClasses}">
-        <label class="block text-[10px] text-black-300 mb-1 truncate">
+        <label class="block text-[10px] text-black-300 mb-1 truncate ${labelClass}">
             ${label}
         </label>
         <div class="border border-gray-300 rounded-lg px-3 py-2 min-h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
