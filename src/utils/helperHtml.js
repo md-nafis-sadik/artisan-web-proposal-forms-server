@@ -19,7 +19,7 @@ export const generateFieldHTML = (
         <label class="block text-[10px] text-black-300 mb-1 truncate">
             ${label}
         </label>
-        <div class="border border-gray-300 rounded-lg px-3 py-2 h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
+        <div class="border border-gray-300 rounded-lg px-3 py-2 min-h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
           isEmpty ? "text-gray-300 italic" : "text-black-300"
         }">
             ${displayValue || placeholder || `Enter ${label.replace(" *", "")}`}
@@ -30,19 +30,19 @@ export const generateFieldHTML = (
 export const generateCheckboxHTML = (label, checked) => {
   return `
     <div class="flex items-center gap-2 mb-2">
-        <div class="flex items-center justify-center w-[11px] h-[11px] border-2 border-black rounded-full flex-shrink-0 ${
-          checked ? "bg-black" : "bg-white"
-        }">
-            ${
-              checked
-                ? '<span class="text-black text-[10px] leading-none bg-black w-[10px] h-[10px] rounded-full border-2 border-white">✓</span>'
-                : ""
-            }
-        </div>
-        <span class="text-[10px] text-gray-700">${label}</span>
+      <div class="flex items-center justify-center w-[14px] h-[14px] border-[1px] border-black rounded-full flex-shrink-0">
+        ${
+          checked
+            ? '<span class="block w-[6px] h-[6px] bg-black rounded-full ring-[2px] ring-white"></span>'
+            : ''
+        }
+      </div>
+      <span class="text-[10px] text-gray-700">${label}</span>
     </div>
   `;
 };
+
+
 
 export const formatDate = (timestamp) => {
   if (!timestamp) return "";
@@ -60,7 +60,7 @@ export const generateDateFieldHTML = (label, timestamp, placeholder = "") => {
         <label class="block text-[10px] text-black-300 mb-1">
             ${label}
         </label>
-        <div class="border border-gray-300 rounded-lg px-3 py-2 h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
+        <div class="border border-gray-300 rounded-lg px-3 py-2 min-h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
           showPlaceholder ? "text-gray-300 italic" : "text-black-300"
         }">
             ${displayValue || placeholderText}
@@ -71,19 +71,21 @@ export const generateDateFieldHTML = (label, timestamp, placeholder = "") => {
 
 const generateDynamicRows = (fieldConfigs, dataArgs) => {
   if (!fieldConfigs) return "";
-  
+
   if (!dataArgs || dataArgs.length === 0) return "";
-  
-  const normalizedConfigs = Array.isArray(fieldConfigs) ? fieldConfigs : [fieldConfigs];
-  
+
+  const normalizedConfigs = Array.isArray(fieldConfigs)
+    ? fieldConfigs
+    : [fieldConfigs];
+
   const normalizedData = parseDataArguments(dataArgs, normalizedConfigs.length);
-  
+
   return normalizedData
     .map((rowValues) => {
       const fieldHTMLArray = generateFieldsHTML(normalizedConfigs, rowValues);
-      
+
       const gridClass = getGridClass(fieldHTMLArray.length);
-      
+
       return `
         <div class="${gridClass} gap-2 mb-2">
           ${fieldHTMLArray.join("")}
@@ -97,9 +99,13 @@ const parseDataArguments = (dataArgs, fieldCount) => {
   // If first argument is an array, treat it as the main data source
   if (dataArgs.length === 1 && Array.isArray(dataArgs[0])) {
     const data = dataArgs[0];
-    
+
     // If it's an array of objects (like form data), return it directly
-    if (data.length > 0 && typeof data[0] === 'object' && !Array.isArray(data[0])) {
+    if (
+      data.length > 0 &&
+      typeof data[0] === "object" &&
+      !Array.isArray(data[0])
+    ) {
       return data;
     }
 
@@ -107,51 +113,58 @@ const parseDataArguments = (dataArgs, fieldCount) => {
     if (Array.isArray(data[0])) {
       return data;
     }
-    
+
     // If it's a simple array that matches field count, wrap it
     if (data.length === fieldCount) {
       return [data];
     }
-    
+
     // Otherwise return as single row
     return [data];
   }
-  
+
   // Handle multiple arguments
   if (dataArgs.length > 0 && dataArgs.length <= 4) {
-    const allPrimitive = dataArgs.every(arg => !Array.isArray(arg) && typeof arg !== 'object');
-    
+    const allPrimitive = dataArgs.every(
+      (arg) => !Array.isArray(arg) && typeof arg !== "object"
+    );
+
     if (allPrimitive) {
       return [dataArgs];
     }
-    
-    return dataArgs.map(arg => Array.isArray(arg) ? arg : [arg]);
+
+    return dataArgs.map((arg) => (Array.isArray(arg) ? arg : [arg]));
   }
-  
+
   return [];
 };
 
 const generateFieldsHTML = (fieldConfigs, rowValues) => {
   const fieldHTMLArray = [];
-  
+
   fieldConfigs.forEach((field, index) => {
     let value;
-    
+
     // If rowValues is an object and field has a fieldName property, use that
-    if (typeof rowValues === 'object' && !Array.isArray(rowValues) && field.fieldName) {
+    if (
+      typeof rowValues === "object" &&
+      !Array.isArray(rowValues) &&
+      field.fieldName
+    ) {
       value = rowValues[field.fieldName];
     } else {
       // Otherwise use index-based access
       value = Array.isArray(rowValues) ? rowValues[index] : rowValues;
     }
-    
-    const html = field.type === "date" 
-      ? generateDateFieldHTML(field.label, value, field.placeholder || "")
-      : generateFieldHTML(field.label, value, field.placeholder || "");
-    
+
+    const html =
+      field.type === "date"
+        ? generateDateFieldHTML(field.label, value, field.placeholder || "")
+        : generateFieldHTML(field.label, value, field.placeholder || "");
+
     fieldHTMLArray.push(html);
   });
-  
+
   return fieldHTMLArray;
 };
 
@@ -160,9 +173,9 @@ const getGridClass = (fieldCount) => {
     1: "grid grid-cols-1",
     2: "grid grid-cols-2",
     3: "grid grid-cols-3",
-    4: "grid grid-cols-4"
+    4: "grid grid-cols-4",
   };
-  
+
   return gridClasses[fieldCount] || "grid grid-cols-1";
 };
 
@@ -205,7 +218,7 @@ export const generateYesNoHTML = (
         <label class="block text-[10px] text-black-300 mb-1">
             ${detailsLabel}
         </label>
-        <div class="border border-gray-300 rounded-lg px-3 py-2 h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
+        <div class="border border-gray-300 rounded-lg px-3 py-2 min-h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
           !details ? "text-gray-300 italic" : "text-black-300"
         }">
             ${details || `Enter Details}`}
@@ -491,14 +504,16 @@ export const generate4YesNoHTML = (label, data, labelClass = "") => {
 };
 
 export const generateDynamicYesNoHTML = (
-  label, 
-  config,  // { value0: "Yes/No", value1: field config or array of field configs }
-  ...dataArgs  // Can be array OR individual values (data1, data2, data3, data4)
+  label,
+  config, // { value0: "Yes/No", value1: field config or array of field configs }
+  ...dataArgs // Can be array OR individual values (data1, data2, data3, data4)
 ) => {
   return `
     <div class="flex flex-col gap-1 mb-2">
       <div class="flex justify-between items-start gap-2">
-        <div class="text-xs font-semibold text-black-300 w-3/4 ${config.labelClass || ""}">
+        <div class="text-xs font-semibold text-black-300 w-3/4 ${
+          config.labelClass || ""
+        }">
           ${label}
         </div>
         <div class="flex gap-2">

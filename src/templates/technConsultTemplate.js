@@ -20,7 +20,7 @@ const generateStep1HTML = (data, needsPageBreak = false) => {
       <div class="w-full flex flex-col items-center gap-4">
         <img src="https://artisan.quickdraw.tech/assets/pdfLogo.png" class="w-[119px] h-auto mx-auto" alt="Background Logo" />
         <div class="text-sm font-bold text-black-300 text-center w-full">
-          Miscellaneous PI Proposal Form
+          Technology Consultants Combined Liability Form
         </div>
       </div>
       <div class="mb-4 mt-5 w-full flex justify-center items-center">
@@ -472,7 +472,7 @@ const generateStep4HTML = (data) => {
         </div>
       </div>
 
-      <div class="py-4">
+
             <div class="w-full flex flex-col gap-4">
               <!-- Section 11: Income Table -->
               <div class="flex flex-col gap-2">
@@ -622,7 +622,7 @@ const generateStep4HTML = (data) => {
                                   "Project/Contract Type"
                                 )}
                                     ${generateFieldHTML(
-                                          "Project/Contract Value",
+                                      "Project/Contract Value",
                                       project.contractValue,
                                       "$"
                                     )}
@@ -657,9 +657,7 @@ const generateStep4HTML = (data) => {
                 ${generateYesNoHTML(
                   "(b) Supply of materials, plant, goods, products or equipment?",
                   data.supplyMaterials,
-                  data.supplyPercentage
-                    ? `${data.supplyPercentage}%`
-                    : "",
+                  data.supplyPercentage ? `${data.supplyPercentage}%` : "",
                   "What percentage of the total fees/turnover declared in 12 relates to such work"
                 )}
               </div>
@@ -694,10 +692,7 @@ const generateStep4HTML = (data) => {
                           ? "text-gray-300 italic"
                           : "text-black-300"
                       }">
-                        ${
-                          data.subcontractDetails ||
-                          "Please provide details"
-                        }
+                        ${data.subcontractDetails || "Please provide details"}
                       </div>
                     </div>
 
@@ -711,7 +706,7 @@ const generateStep4HTML = (data) => {
                   `
                     : ""
                 }
-              </div>
+
             </div>
           </div>
   `;
@@ -742,7 +737,6 @@ const generateStep5HTML = (data) => {
       </div>
 
 
-      <div class="py-4">
             <div class="w-full flex flex-col gap-3.5">
               <!-- Section 9: Business Discipline -->
               <div class="flex flex-col gap-3.5">
@@ -752,22 +746,78 @@ const generateStep5HTML = (data) => {
                 <div class="flex flex-col gap-2">
                   <div class="text-xs font-semibold text-black-300">Business Discipline</div>
                   <div class="grid grid-cols-3 gap-3.5">
-                    ${generateFieldHTML("Bespoke software (1st party developed)", data.bespokeSoftware, "0%")}
-                    ${generateFieldHTML("Data processing", data.dataProcessing, "0%")}
-                    ${generateFieldHTML("Education & training", data.educationTraining, "0%")}
-                    ${generateFieldHTML("Facilities management / outsourcing", data.facilitiesManagement, "0%")}
-                    ${generateFieldHTML("General IT advice / consulting", data.generalITAdvice, "0%")}
-                    ${generateFieldHTML("Hardware design / manufacture / installation", data.hardwareDesign, "0%")}
-                    ${generateFieldHTML("Internet service provider", data.internetServiceProvider, "0%")}
-                    ${generateFieldHTML("Project management", data.projectManagement, "0%")}
-                    ${generateFieldHTML("Sale and supply of 3rd party hardware", data.saleSupply3rdPartyHardware, "0%")}
-                    ${generateFieldHTML("Sale of customisable software (3rd party developed, 1st party customised)", data.saleCustomisableSoftware, "0%")}
-                    ${generateFieldHTML("Sale of packaged software (3rd party developed)", data.salePackagedSoftware, "0%")}
-                    ${generateFieldHTML("Software maintenance", data.softwareMaintenance, "0%")}
-                    ${generateFieldHTML("Systems integration", data.systemsIntegration, "0%")}
+                    ${generateFieldHTML(
+                      "Bespoke software (1st party developed)",
+                      data.bespokeSoftware,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Data processing",
+                      data.dataProcessing,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Education & training",
+                      data.educationTraining,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Facilities management / outsourcing",
+                      data.facilitiesManagement,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "General IT advice / consulting",
+                      data.generalITAdvice,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Hardware design / manufacture / installation",
+                      data.hardwareDesign,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Internet service provider",
+                      data.internetServiceProvider,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Project management",
+                      data.projectManagement,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Sale and supply of 3rd party hardware",
+                      data.saleSupply3rdPartyHardware,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Sale of customisable software (3rd party developed, 1st party customised)",
+                      data.saleCustomisableSoftware,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Sale of packaged software (3rd party developed)",
+                      data.salePackagedSoftware,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Software maintenance",
+                      data.softwareMaintenance,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Systems integration",
+                      data.systemsIntegration,
+                      "0%"
+                    )}
                     ${generateFieldHTML("Web design", data.webDesign, "0%")}
                   </div>
-                  ${generateFieldHTML("Other (please specify below)", data.businessDisciplineOtherDetails, "Please provide details")}
+                  ${generateFieldHTML(
+                    "Other (please specify below)",
+                    data.businessDisciplineOtherDetails,
+                    "Please provide details"
+                  )}
                 </div>
               </div>
 
@@ -779,22 +829,74 @@ const generateStep5HTML = (data) => {
                 <div class="flex flex-col gap-2">
                   <div class="text-xs font-semibold text-black-300">End User</div>
                   <div class="grid grid-cols-3 gap-3.5">
-                    ${generateFieldHTML("Administrative", data.administrative, "0%")}
-                    ${generateFieldHTML("Accounting / Financial (Non Fund Transfer)", data.accountingFinancial, "0%")}
-                    ${generateFieldHTML("Architectural / Engineering", data.architecturalEngineering, "0%")}
-                    ${generateFieldHTML("Communications: Utilities / Info Services", data.communicationsUtilities, "0%")}
-                    ${generateFieldHTML("Database Management Systems", data.databaseManagement, "0%")}
+                    ${generateFieldHTML(
+                      "Administrative",
+                      data.administrative,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Accounting / Financial (Non Fund Transfer)",
+                      data.accountingFinancial,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Architectural / Engineering",
+                      data.architecturalEngineering,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Communications: Utilities / Info Services",
+                      data.communicationsUtilities,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Database Management Systems",
+                      data.databaseManagement,
+                      "0%"
+                    )}
                     ${generateFieldHTML("Educational", data.educational, "0%")}
-                    ${generateFieldHTML("Fund Transfer", data.fundTransfer, "0%")}
+                    ${generateFieldHTML(
+                      "Fund Transfer",
+                      data.fundTransfer,
+                      "0%"
+                    )}
                     ${generateFieldHTML("Imaging", data.imaging, "0%")}
-                    ${generateFieldHTML("Inventory Control", data.inventoryControl, "0%")}
-                    ${generateFieldHTML("LAN / Network Management", data.lanNetworkManagement, "0%")}
-                    ${generateFieldHTML("Medical Management", data.medicalManagement, "0%")}
-                    ${generateFieldHTML("Manufacturing Process Control Systems", data.manufacturingProcessControl, "0%")}
-                    ${generateFieldHTML("Scientific / Mathematical", data.scientificMathematical, "0%")}
-                    ${generateFieldHTML("Security (firewalls etc.)", data.security, "0%")}
+                    ${generateFieldHTML(
+                      "Inventory Control",
+                      data.inventoryControl,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "LAN / Network Management",
+                      data.lanNetworkManagement,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Medical Management",
+                      data.medicalManagement,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Manufacturing Process Control Systems",
+                      data.manufacturingProcessControl,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Scientific / Mathematical",
+                      data.scientificMathematical,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Security (firewalls etc.)",
+                      data.security,
+                      "0%"
+                    )}
                   </div>
-                  ${generateFieldHTML("Other (please specify below)", data.endUserOtherDetails, "Please provide details")}
+                  ${generateFieldHTML(
+                    "Other (please specify below)",
+                    data.endUserOtherDetails,
+                    "Please provide details"
+                  )}
                 </div>
               </div>
 
@@ -807,20 +909,59 @@ const generateStep5HTML = (data) => {
                   <div class="text-xs font-semibold text-black-300">Industry</div>
                   <div class="grid grid-cols-3 gap-3.5">
                     ${generateFieldHTML("Aerospace", data.aerospace, "0%")}
-                    ${generateFieldHTML("Communications / Transportation", data.communicationsTransportation, "0%")}
-                    ${generateFieldHTML("Construction / Mining / Agriculture", data.constructionMiningAgriculture, "0%")}
-                    ${generateFieldHTML("Education", data.educationIndustry, "0%")}
-                    ${generateFieldHTML("Financial Institutions", data.financialInstitutions, "0%")}
-                    ${generateFieldHTML("Government (military)", data.governmentMilitary, "0%")}
-                    ${generateFieldHTML("Government (non-military)", data.governmentNonMilitary, "0%")}
-                    ${generateFieldHTML("Health Care / Medical Services", data.healthCareMedical, "0%")}
+                    ${generateFieldHTML(
+                      "Communications / Transportation",
+                      data.communicationsTransportation,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Construction / Mining / Agriculture",
+                      data.constructionMiningAgriculture,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Education",
+                      data.educationIndustry,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Financial Institutions",
+                      data.financialInstitutions,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Government (military)",
+                      data.governmentMilitary,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Government (non-military)",
+                      data.governmentNonMilitary,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Health Care / Medical Services",
+                      data.healthCareMedical,
+                      "0%"
+                    )}
                     ${generateFieldHTML("Home Use", data.homeUse, "0%")}
-                    ${generateFieldHTML("Manufacturing / Industrial", data.manufacturingIndustrial, "0%")}
-                    ${generateFieldHTML("Trade: Retail / Wholesale", data.tradeRetailWholesale, "0%")}
+                    ${generateFieldHTML(
+                      "Manufacturing / Industrial",
+                      data.manufacturingIndustrial,
+                      "0%"
+                    )}
+                    ${generateFieldHTML(
+                      "Trade: Retail / Wholesale",
+                      data.tradeRetailWholesale,
+                      "0%"
+                    )}
                   </div>
-                  ${generateFieldHTML("Other (please specify below)", data.industryOtherDetails, "Please provide details")}
+                  ${generateFieldHTML(
+                    "Other (please specify below)",
+                    data.industryOtherDetails,
+                    "Please provide details"
+                  )}
                 </div>
-              </div>
             </div>
           </div>
   `;
@@ -850,7 +991,6 @@ const generateStep6HTML = (data) => {
       </div>
 
 
-          <div class="py-4">
             <div class="w-full flex flex-col gap-4">
               <!-- Question 12: Australian Financial Services Licence -->
               <div class="flex flex-col gap-2">
@@ -881,10 +1021,20 @@ const generateStep6HTML = (data) => {
                   {
                     value0: data.otherProfessionalService,
                     value1: [
-                      { label: "Name subsidiary", placeholder: "Name subsidiary", type: "field", fieldName: "subsidiaryName" },
-                      { label: "Date ceased to be a subsidiary", placeholder: "Date ceased to be a subsidiary", type: "field", fieldName: "subsidiaryCeasedDate" }
+                      {
+                        label: "Name subsidiary",
+                        placeholder: "Name subsidiary",
+                        type: "field",
+                        fieldName: "subsidiaryName",
+                      },
+                      {
+                        label: "Date ceased to be a subsidiary",
+                        placeholder: "Date ceased to be a subsidiary",
+                        type: "field",
+                        fieldName: "subsidiaryCeasedDate",
+                      },
                     ],
-                    labelClass: "text-xs"
+                    labelClass: "text-xs",
                   },
                   data.otherProfessionalServiceDetails
                 )}
@@ -919,11 +1069,26 @@ const generateStep6HTML = (data) => {
                   {
                     value0: data.previousBusiness,
                     value1: [
-                      { label: "Name of Principal or Director", placeholder: "Name of Principal or Director", type: "field", fieldName: "principalName" },
-                      { label: "Name of Previous Business", placeholder: "Name of Previous Business", type: "field", fieldName: "previousBusinessName" },
-                      { label: "Professional Services/ Activities", placeholder: "Professional Services/ Activities", type: "field", fieldName: "professionalServices" }
+                      {
+                        label: "Name of Principal or Director",
+                        placeholder: "Name of Principal or Director",
+                        type: "field",
+                        fieldName: "principalName",
+                      },
+                      {
+                        label: "Name of Previous Business",
+                        placeholder: "Name of Previous Business",
+                        type: "field",
+                        fieldName: "previousBusinessName",
+                      },
+                      {
+                        label: "Professional Services/ Activities",
+                        placeholder: "Professional Services/ Activities",
+                        type: "field",
+                        fieldName: "professionalServices",
+                      },
                     ],
-                    labelClass: "text-xs"
+                    labelClass: "text-xs",
                   },
                   data.previousBusinessDetails
                 )}
@@ -947,17 +1112,36 @@ const generateStep6HTML = (data) => {
                   {
                     value0: data.representationOutside,
                     value1: [
-                      { label: "Country", placeholder: "Country", type: "field", fieldName: "country" },
-                      { label: "Fees/Turnover", placeholder: "$", type: "field", fieldName: "fees" },
-                      { label: "Number of staff", placeholder: "Number of staff", type: "field", fieldName: "staffNumber" },
-                      { label: "Number of offices", placeholder: "Number of offices", type: "field", fieldName: "officeNumber" }
+                      {
+                        label: "Country",
+                        placeholder: "Country",
+                        type: "field",
+                        fieldName: "country",
+                      },
+                      {
+                        label: "Fees/Turnover",
+                        placeholder: "$",
+                        type: "field",
+                        fieldName: "fees",
+                      },
+                      {
+                        label: "Number of staff",
+                        placeholder: "Number of staff",
+                        type: "field",
+                        fieldName: "staffNumber",
+                      },
+                      {
+                        label: "Number of offices",
+                        placeholder: "Number of offices",
+                        type: "field",
+                        fieldName: "officeNumber",
+                      },
                     ],
-                    labelClass: "text-xs"
+                    labelClass: "text-xs",
                   },
                   data.representationOutsideDetails
                 )}
               </div>
-            </div>
           </div>
   `;
 };
@@ -987,7 +1171,6 @@ const generateStep7HTML = (data) => {
       </div>
 
 
-           <div class="py-4">
         <div class="w-full flex flex-col gap-3.5">
           <!-- Section 20: Does the Insured -->
           <div class="text-xs font-semibold text-black-300">
@@ -1079,25 +1262,17 @@ const generateStep7HTML = (data) => {
             "text-xs"
           )}
 
-          <!-- Textarea for consequential loss details -->
-          <div class="flex flex-col gap-2">
-            <div class="text-xs font-semibold text-black-300">
-              If the Insured accepts consequential loss, waiver of subrogation or provides any hold harmless or indemnity to third parties, please provide further details here.
-            </div>
-            <div class="border border-gray-300 rounded-md p-3 min-h-[100px] bg-white">
-              ${data.requiresLicenseDetails || ""}
-            </div>
-          </div>
+          ${generateFieldHTML(
+            "If the Insured accepts consequential loss, waiver of subrogation or provides any hold harmless or indemnity to third parties, please provide further details here.",
+            data.requiresLicenseDetails,
+            "Please provide details",
+          )}
 
-          <!-- Textarea for non-standard contracts details -->
-          <div class="flex flex-col gap-2">
-            <div class="text-xs font-semibold text-black-300">
-              If "No", please advise below in what circumstances are non-standard contracts used without external legal counsel review (use a separate sheet of your letter head paper if insufficient room below).
-            </div>
-            <div class="border border-gray-300 rounded-md p-3 min-h-[100px] bg-white">
-              ${data.requiresLicenseDetails || ""}
-            </div>
-          </div>
+          ${generateFieldHTML(
+            "If \"No\", please advise below in what circumstances are non-standard contracts used without external legal counsel review (use a separate sheet of your letter head paper if insufficient room below).",
+            data.notStandardContractDetails,
+            "Please provide details",
+          )}
 
           <!-- Section 21: Quality Control Procedures -->
           <div class="text-xs font-semibold text-black-300">
@@ -1175,7 +1350,6 @@ const generateStep7HTML = (data) => {
             "",
             "text-xs"
           )}
-        </div>
       </div>
   `;
 };
@@ -1203,13 +1377,10 @@ const generateStep8HTML = (data) => {
           </div>
         </div>
 
-
-          <div class="py-4">
             <div class="w-full flex flex-col gap-4">
-              <!-- Section 15: Current PI Insurance -->
               <div class="flex flex-col gap-2">
                 ${generate6YesNoHTML(
-                  "20. Does the Insured carry an active and current Professional Indemnity Insurance Policy?",
+                  "22. Does the Insured carry an active and current Professional Indemnity Insurance Policy?",
                   {
                     value0: data.hasCurrentPI,
                     value1: data.currentPIInsurer,
@@ -1224,10 +1395,9 @@ const generateStep8HTML = (data) => {
                 )}
               </div>
 
-              <!-- Section 16: Stamp Duty Declaration -->
               <div class="flex flex-col gap-2">
                 <div class="text-xs font-semibold text-black-300">
-                  21. Stamp Duty Declaration – Please provide a percentage breakdown of fees/turnover by location as follow8
+                  23. Stamp Duty Declaration – Please provide a percentage breakdown of fees/turnover by location as follow8
                 </div>
 
                 <!-- First row of states -->
@@ -1250,7 +1420,6 @@ const generateStep8HTML = (data) => {
                   ${generateFieldHTML("NT", data.nt, "0%")}
                   ${generateFieldHTML("Other", data.other, "0%")}
                 </div>
-              </div>
             </div>
           </div>
   `;
@@ -1279,13 +1448,10 @@ const generateStep9HTML = (data) => {
         </div>
       </div>
 
-
-          <div class="py-4">
             <div class="w-full flex flex-col gap-4">
-              <!-- Section 17: Circumstances -->
               <div class="flex flex-col gap-2">
                 ${generateYesNoHTML(
-                  "22. Is the Insured aware of any circumstance or incident which may give rise to a claim against the Insured or its partners/principals/directors or employees?",
+                  "24. Is the Insured aware of any circumstance or incident which may give rise to a claim against the Insured or its partners/principals/directors or employees?",
                   data.awareOfCircumstances,
                   data.circumstancesDetails,
                   "Please provide details",
@@ -1293,10 +1459,9 @@ const generateStep9HTML = (data) => {
                 )}
               </div>
 
-              <!-- Section 18: Pending Claims -->
               <div class="flex flex-col gap-2">
                 ${generate6v3YesNoHTML(
-                  "23. Has there ever been or is there any pending claims against the Insured, its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors or employees for actual or alleged breaches of professional duties or services for which this policy relates?",
+                  "25. Has there ever been or is there any pending claims against the Insured, its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors or employees for actual or alleged breaches of professional duties or services for which this policy relates?",
                   {
                     value0: data.pendingClaims,
                     value1: data.claimsDetails,
@@ -1306,10 +1471,9 @@ const generateStep9HTML = (data) => {
                 )}
                           </div>
 
-              <!-- Section 19: Prosecution -->
               <div class="flex flex-col gap-2">
                 ${generateYesNoHTML(
-                  "24. Is the Insured aware of any actual or pending prosecution, investigation or inquiry of the Insured or any partners/principals/directors or employees under any statute, legislation, regulation or By-Law whatsoever?",
+                  "26. Is the Insured aware of any actual or pending prosecution, investigation or inquiry of the Insured or any partners/principals/directors or employees under any statute, legislation, regulation or By-Law whatsoever?",
                   data.prosecution,
                   data.prosecutionDetails,
                   "Please provide details",
@@ -1317,10 +1481,9 @@ const generateStep9HTML = (data) => {
                 )}
               </div>
 
-              <!-- Section 20: Disciplinary Action -->
               <div class="flex flex-col gap-2">
                 ${generateYesNoHTML(
-                  "25. Has the Insured or any partner/directors or employees ever been subject to any disciplinary action, been fined or penalized, or been the subject of an inquiry investigating or alleging professional misconduct?",
+                  "27. Has the Insured or any partner/directors or employees ever been subject to any disciplinary action, been fined or penalized, or been the subject of an inquiry investigating or alleging professional misconduct?",
                   data.disciplinaryAction,
                   data.disciplinaryDetails,
                   "Please provide details",
@@ -1328,17 +1491,15 @@ const generateStep9HTML = (data) => {
                 )}
                 </div>
 
-              <!-- Section 21: PI Insurance Declined -->
               <div class="flex flex-col gap-2">
                 ${generateYesNoHTML(
-                  "26. Has the Insured (including its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors) ever had any Insurer decline a proposal, imposed any special terms, cancelled or refused to renew a Professional Indemnity Insurance policy?",
+                  "28. Has the Insured (including its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors) ever had any Insurer decline a proposal, imposed any special terms, cancelled or refused to renew a Professional Indemnity Insurance policy?",
                   data.piInsuranceDeclined,
                   data.declinedDetails,
                   "Please provide details",
                   "text-xs"
                 )}
               </div>
-            </div>
           </div>
 
   `;
@@ -1366,7 +1527,7 @@ const generateStep10HTML = (data) => {
                 Part F – Declaration
             </div>
           </div>
-          <div class="w-full flex flex-col gap-4">
+          <div class="w-full flex flex-col gap-3">
               <!-- Declaration Text -->
               <div class="flex flex-col gap-2">
                 <div class="text-xs font-semibold text-black-300">

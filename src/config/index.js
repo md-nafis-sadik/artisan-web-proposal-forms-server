@@ -13,7 +13,7 @@ const getConfig = () => ({
   },
   pdf: {
     headless: process.env.PDF_HEADLESS !== "false",
-    timeout: parseInt(process.env.PDF_TIMEOUT) || 30000,
+    timeout: parseInt(process.env.PDF_TIMEOUT) || 100000,
     format: process.env.PDF_FORMAT || "A4",
   },
 });
