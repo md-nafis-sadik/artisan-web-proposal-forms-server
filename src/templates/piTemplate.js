@@ -8,7 +8,6 @@ import {
 } from "../utils/helperHtml.js";
 import { generateTailwindHTML } from "./baseTemplate.js";
 
-
 const generateStep1HTML = (data, needsPageBreak = false) => {
   const content = `
     <div class="step-content">
@@ -113,7 +112,6 @@ const generateStep1HTML = (data, needsPageBreak = false) => {
     needsPageBreak
   );
 };
-
 
 const generateStep2HTML = (data, needsPageBreak = false) => {
   const content = `
@@ -760,7 +758,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                                   "Project/Contract Type"
                                 )}
                                     ${generateFieldHTML(
-                                          "Project/Contract Value",
+                                      "Project/Contract Value",
                                       project.contractValue,
                                       "$"
                                     )}
@@ -1051,7 +1049,9 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     <div class="w-1/3">
 
                     <div class="border border-gray-300 rounded-lg px-3 py-2 h-[32px] flex items-center justify-center text-[10px] placeholder:text-[10px]">
-                      <img src="${data.step7.signed}" alt="Signature" class="max-h-[30px]"/>
+                      <img src="${
+                        data.step7.signed
+                      }" alt="Signature" class="max-h-[30px]"/>
                     </div>
 
                     </div>
@@ -1110,9 +1110,10 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
 };
 
 export const piProposalFormTemplate = (formData) => {
-  const steps = Object.keys(formData).filter(
-    (stepKey) => formData[stepKey] && Object.keys(formData[stepKey]).length > 0
-  );
+  const steps = Object.keys(formData).filter((stepKey) => {
+    if (stepKey === "step2") return true;
+    return formData[stepKey] && Object.keys(formData[stepKey]).length > 0;
+  });
 
   const content = steps
     .map((stepKey) => {

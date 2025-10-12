@@ -1239,9 +1239,10 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
 };
 
 export const accountantFormTemplate = (formData) => {
-  const steps = Object.keys(formData).filter(
-    (stepKey) => formData[stepKey] && Object.keys(formData[stepKey]).length > 0
-  );
+  const steps = Object.keys(formData).filter((stepKey) => {
+    if (stepKey === "step2") return true;
+    return formData[stepKey] && Object.keys(formData[stepKey]).length > 0;
+  });
 
   const content = steps
     .map((stepKey) => {
