@@ -1,4 +1,3 @@
-import config from "../config/index.js";
 import {
   generateFieldHTML,
   generateCheckboxHTML,

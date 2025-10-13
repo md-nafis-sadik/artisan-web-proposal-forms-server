@@ -274,7 +274,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
             ? data.step3.insuredEntities
                 .map(
                   (entity, index) => `
-              <div class="grid grid-cols-4 gap-2 mb-2">
+              <div class="grid grid-cols-3 gap-2 mb-2">
                 ${generateFieldHTML(
                   `Insured Entity ${index + 1}`,
                   entity.entity,
@@ -813,7 +813,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                             ${
                               data.step4.subcontract === "Yes"
                                 ? `
-                  <div class="ml-4 mt-2 flex flex-col gap-2">
+                  <div class="mt-2 flex flex-col gap-2">
                     <div class="flex flex-col gap-1">
                       <div class="text-[10px] font-semibold text-black-300">(a) Please confirm the percentage of fees/turnover paid to subcontractors in the last 12 months?</div>
                       ${generateFieldHTML(
