@@ -1295,7 +1295,7 @@ const generateStep8HTML = (data) => {
                     value5: data.currentPIExpiryDate,
                     value6: data.currentPIRetroactiveDate,
                   },
-                  "",
+                  "Please provide details",
                   "text-xs"
                 )}
               </div>
