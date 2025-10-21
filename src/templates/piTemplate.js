@@ -474,7 +474,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
               "(ii) Does the Insured anticipate any changes to the above Activities in the next 12 months?",
               data.step3.anticipateChanges,
               data.step3.anticipateChangesDetails,
-              "Please provide details"
+              ""
             )}
           </div>
 
@@ -483,7 +483,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
               "(iii) Has the Insured performed any other professional service or activity other than described in 6 (i) above and for which cover may be required?",
               data.step3.otherServices,
               data.step3.otherServicesDetails,
-              "Please provide details"
+              ""
             )}
           </div>
 
@@ -492,7 +492,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
               "(iv) Is cover required for professional services or activities which have been provided by a former subsidiary?",
               data.step3.formerSubsidiary,
               data.step3.formerSubsidiaryDetails,
-              "Please provide details"
+              ""
             )}
           </div>
         </div>
@@ -504,7 +504,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
           "6. Has the Insured or any of its subsidiaries undertaken any mergers or acquisitions in the last five years?",
           data.step3.mergers,
           data.step3.mergersDetails,
-          "Please provide details",
+          "",
           "text-xs"
         )}
       </div>
@@ -515,7 +515,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
           "7. Has the Insured or any of its subsidiaries been involved in any joint ventures in the last five years?",
           data.step3.jointVentures,
           data.step3.jointVenturesDetails,
-          "Please provide details",
+          "",
           "text-xs"
         )}
       </div>
@@ -526,7 +526,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
           "8. Does the Insured require cover for any previous business including the previous business of any principal or director?",
           data.step3.previousBusiness,
           data.step3.previousBusinessDetails,
-          "Please provide details",
+          "",
           "text-xs"
         )}
       </div>
@@ -537,7 +537,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
           "9. Does the Insured hold any licence or accreditation which is required in order to provide professional services or activities for which cover is requested?",
           data.step3.licenses,
           data.step3.licensesDetails,
-          "Please provide details",
+          "",
           "text-xs"
         )}
       </div>
@@ -830,10 +830,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                           ? "text-gray-300 italic"
                           : "text-black-300"
                       }">
-                        ${
-                          data.step4.subcontractDetails ||
-                          "Please provide details"
-                        }
+                        ${data.step4.subcontractDetails || ""}
                       </div>
                     </div>
 
@@ -880,7 +877,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "15. Does the Insured carry an active and current Professional Indemnity Insurance Policy?",
                   data.step5.hasCurrentPI,
                   data.step5.currentPIDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -945,7 +942,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "17. Is the Insured aware of any circumstance or incident which may give rise to a claim against the Insured or its partners/principals/directors or employees?",
                   data.step6.awareOfCircumstances,
                   data.step6.circumstancesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -956,7 +953,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "18. Has there ever been or is there any pending claims against the Insured, its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors or employees for actual or alleged breaches of professional duties or services for which this policy relates?",
                   data.step6.pendingClaims,
                   data.step6.claimsDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                           </div>
@@ -967,7 +964,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "19. Is the Insured aware of any actual or pending prosecution, investigation or inquiry of the Insured or any partners/principals/directors or employees under any statute, legislation, regulation or By-Law whatsoever?",
                   data.step6.prosecution,
                   data.step6.prosecutionDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -978,7 +975,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "20. Has the Insured or any partner/directors or employees ever been subject to any disciplinary action, been fined or penalised, or been the subject of an inquiry investigating or alleging professional misconduct?",
                   data.step6.disciplinaryAction,
                   data.step6.disciplinaryDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                 </div>
@@ -989,7 +986,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "21. Has the Insured (including its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors) ever had any Insurer decline a proposal, imposed any special terms, cancelled or refused to renew a Professional Indemnity Insurance policy?",
                   data.step6.piInsuranceDeclined,
                   data.step6.declinedDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>

@@ -5,6 +5,7 @@ import { piProposalFormTemplate } from "../templates/piTemplate.js";
 import { accountantFormTemplate } from "../templates/accountantTemplate.js";
 import { techConsultFormTemplate } from "../templates/technConsultTemplate.js";
 import { recruitLabourFormTemplate } from "../templates/recruitLabourTemplate.js";
+import { realEstateAgentsFormTemplate } from "../templates/realEstateAgentsTemplate.js";
 
 const router = express.Router();
 
@@ -31,6 +32,8 @@ router.post("/generate-pdf", async (req, res) => {
       htmlContent = techConsultFormTemplate(formData);
     } else if (type === "recruitLabour") {
       htmlContent = recruitLabourFormTemplate(formData);
+    } else if (type === "realEstateAgents") {
+      htmlContent = realEstateAgentsFormTemplate(formData);
     }
 
     if (!htmlContent || htmlContent.length === 0) {

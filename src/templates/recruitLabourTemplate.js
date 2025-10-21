@@ -1111,7 +1111,7 @@ const generateStep7HTML = (data) => {
           ${generateFieldHTML(
             "(i) If you answered Other \"On-Hired\" professions in Q 9 above, please provide further details.",
             data.onHiredDetails,
-            "Please provide details",
+            "",
             "",
             "text-[10px] font-semibold text-black-300"
           )}
@@ -1120,7 +1120,7 @@ const generateStep7HTML = (data) => {
           ${generateFieldHTML(
             "(ii) If you answered Other \"Independent Contractor Placements\" in Q10 above, please provide further details.",
             data.independentContractorDetails,
-            "Please provide details",
+            "",
             "",
             "text-[10px] font-semibold text-black-300"
           )}
@@ -1181,7 +1181,7 @@ const generateStep7HTML = (data) => {
           ${generateFieldHTML(
             "If Yes, please provide details:",
             data.ifYesDetails,
-            "Please provide details",
+            "",
             "",
             "text-[10px] font-semibold text-black-300"
           )}
@@ -1295,7 +1295,7 @@ const generateStep8HTML = (data) => {
                     value5: data.currentPIExpiryDate,
                     value6: data.currentPIRetroactiveDate,
                   },
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1356,7 +1356,7 @@ const generateStep9HTML = (data) => {
                   "14. Is the Insured aware of any circumstance or incident which may give rise to a claim against the Insured or its partners/principals/directors or employees?",
                   data.awareOfCircumstances,
                   data.circumstancesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1368,7 +1368,7 @@ const generateStep9HTML = (data) => {
                     value0: data.pendingClaims,
                     value1: data.claimsDetails,
                   },
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                           </div>
@@ -1378,7 +1378,7 @@ const generateStep9HTML = (data) => {
                   "16. Is the Insured aware of any actual or pending prosecution, investigation or inquiry of the Insured or any partners/principals/directors or employees under any statute, legislation, regulation or By-Law whatsoever?",
                   data.prosecution,
                   data.prosecutionDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1388,7 +1388,7 @@ const generateStep9HTML = (data) => {
                   "17. Has the Insured or any partner/directors or employees ever been subject to any disciplinary action, been fined or penalized, or been the subject of an inquiry investigating or alleging professional misconduct?",
                   data.disciplinaryAction,
                   data.disciplinaryDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                 </div>
@@ -1398,7 +1398,7 @@ const generateStep9HTML = (data) => {
                   "18. Has the Insured (including its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors) ever had any Insurer decline a proposal, imposed any special terms, cancelled or refused to renew a Professional Indemnity Insurance policy?",
                   data.piInsuranceDeclined,
                   data.declinedDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>

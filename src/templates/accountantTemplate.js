@@ -815,7 +815,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "9. Does the Insured carry a Australian Financial Services Licence (or limited AFSL)?",
                   data.step5.australianFinancialServicesLicence,
                   data.step5.australianFinancialServicesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -826,7 +826,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "10. Does the Insured anticipate any changes to the above Activities in the next 12 months?",
                   data.step5.anticipateChanges,
                   data.step5.anticipateChangesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                           </div>
@@ -839,7 +839,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     value0: data.step5.otherProfessionalService,
                     value1: data.step5.otherProfessionalServiceDetails,
                   },
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -850,7 +850,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "12. Is cover required for professional services or activities which have been provided by a former subsidiary?",
                   data.step5.formerSubsidiaryServicesCover,
                   data.step5.formerSubsidiaryDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                 </div>
@@ -861,7 +861,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "13. Has the Insured or any of its subsidiaries undertaken any mergers or acquisitions in the last five years?",
                   data.step5.mergersAcquisitions,
                   data.step5.mergersAcquisitionsDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -871,7 +871,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "14. Has the Insured or any of its subsidiaries been involved in any joint ventures in the last five years?",
                   data.step5.jointVentures,
                   data.step5.jointVenturesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -913,7 +913,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     value0: data.step6.previousBusinessCover,
                     value1: data.step6.previousBusinesses,
                   },
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -924,7 +924,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "16. Does the Insured hold any license or accreditation which is required in order to provide professional services or activities for which cover is requested?",
                   data.step6.requiresLicense,
                   data.step6.requiresLicenseDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                           </div>
@@ -935,7 +935,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "17. Does the Insured undertake continual Professional Development?",
                   data.step6.continuousProfessionalDevelopment,
                   null,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -946,7 +946,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "18. Does the Insured do background checks, references and policy checks on all employees?",
                   data.step6.backgroundChecks,
                   data.step6.backgroundChecksDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                 </div>
@@ -957,7 +957,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "19. Does the Insured have peer review procedures and quality assurance/control procedures?",
                   data.step6.peerReviewProcedures,
                   null,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1004,7 +1004,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     value5: data.step7.currentPIExpiryDate,
                     value6: data.step7.currentPIRetroactiveDate,
                   },
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1070,7 +1070,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "22. Is the Insured aware of any circumstance or incident which may give rise to a claim against the Insured or its partners/principals/directors or employees?",
                   data.step8.awareOfCircumstances,
                   data.step8.circumstancesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1083,7 +1083,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                     value0: data.step8.pendingClaims,
                     value1: data.step8.claimsDetails,
                   },
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                           </div>
@@ -1094,7 +1094,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "24. Is the Insured aware of any actual or pending prosecution, investigation or inquiry of the Insured or any partners/principals/directors or employees under any statute, legislation, regulation or By-Law whatsoever?",
                   data.step8.prosecution,
                   data.step8.prosecutionDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1105,7 +1105,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "25. Has the Insured or any partner/directors or employees ever been subject to any disciplinary action, been fined or penalized, or been the subject of an inquiry investigating or alleging professional misconduct?",
                   data.step8.disciplinaryAction,
                   data.step8.disciplinaryDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                 </div>
@@ -1116,7 +1116,7 @@ const generateStep3HTML = (data, needsPageBreak = false) => {
                   "26. Has the Insured (including its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors) ever had any Insurer decline a proposal, imposed any special terms, cancelled or refused to renew a Professional Indemnity Insurance policy?",
                   data.step8.piInsuranceDeclined,
                   data.step8.declinedDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>

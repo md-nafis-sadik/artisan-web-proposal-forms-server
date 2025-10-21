@@ -685,7 +685,7 @@ const generateStep4HTML = (data) => {
                           ? "text-gray-300 italic"
                           : "text-black-300"
                       }">
-                        ${data.subcontractDetails || "Please provide details"}
+                        ${data.subcontractDetails || ""}
                       </div>
                     </div>
 
@@ -805,7 +805,7 @@ const generateStep5HTML = (data) => {
                   ${generateFieldHTML(
                     "Other (please specify below)",
                     data.businessDisciplineOtherDetails,
-                    "Please provide details"
+                    ""
                   )}
                 </div>
               </div>
@@ -884,7 +884,7 @@ const generateStep5HTML = (data) => {
                   ${generateFieldHTML(
                     "Other (please specify below)",
                     data.endUserOtherDetails,
-                    "Please provide details"
+                    ""
                   )}
                 </div>
               </div>
@@ -948,7 +948,7 @@ const generateStep5HTML = (data) => {
                   ${generateFieldHTML(
                     "Other (please specify below)",
                     data.industryOtherDetails,
-                    "Please provide details"
+                    ""
                   )}
                 </div>
             </div>
@@ -985,7 +985,7 @@ const generateStep6HTML = (data) => {
                   "12. Does the Insured anticipate any changes to the above Activities in the next 12 months?",
                   data.australianFinancialServicesLicence,
                   data.australianFinancialServicesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -996,7 +996,7 @@ const generateStep6HTML = (data) => {
                   "13. Has the Insured performed any other professional service or activity other than described in 6 (i) above and for which cover may be required?",
                   data.anticipateChanges,
                   data.anticipateChangesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1033,7 +1033,7 @@ const generateStep6HTML = (data) => {
                   "15. Has the Insured or any of its subsidiaries undertaken any mergers or acquisitions in the last five years?",
                   data.formerSubsidiaryServicesCover,
                   data.formerSubsidiaryDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1044,7 +1044,7 @@ const generateStep6HTML = (data) => {
                   "16. Has the Insured or any of its subsidiaries been involved in any joint ventures in the last five years?",
                   data.mergersAcquisitions,
                   data.mergersAcquisitionsDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1087,7 +1087,7 @@ const generateStep6HTML = (data) => {
                   "18. Does the Insured hold any license or accreditation which is required in order to provide professional services or activities for which cover is requested?",
                   data.jointVentures,
                   data.jointVenturesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1251,13 +1251,13 @@ const generateStep7HTML = (data) => {
           ${generateFieldHTML(
             "If the Insured accepts consequential loss, waiver of subrogation or provides any hold harmless or indemnity to third parties, please provide further details here.",
             data.requiresLicenseDetails,
-            "Please provide details"
+            ""
           )}
 
           ${generateFieldHTML(
             'If "No", please advise below in what circumstances are non-standard contracts used without external legal counsel review (use a separate sheet of your letter head paper if insufficient room below).',
             data.notStandardContractDetails,
-            "Please provide details"
+            ""
           )}
 
           <!-- Section 21: Quality Control Procedures -->
@@ -1376,7 +1376,7 @@ const generateStep8HTML = (data) => {
                     value5: data.currentPIExpiryDate,
                     value6: data.currentPIRetroactiveDate,
                   },
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1438,7 +1438,7 @@ const generateStep9HTML = (data) => {
                   "24. Is the Insured aware of any circumstance or incident which may give rise to a claim against the Insured or its partners/principals/directors or employees?",
                   data.awareOfCircumstances,
                   data.circumstancesDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1450,7 +1450,7 @@ const generateStep9HTML = (data) => {
                     value0: data.pendingClaims,
                     value1: data.claimsDetails,
                   },
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                           </div>
@@ -1460,7 +1460,7 @@ const generateStep9HTML = (data) => {
                   "26. Is the Insured aware of any actual or pending prosecution, investigation or inquiry of the Insured or any partners/principals/directors or employees under any statute, legislation, regulation or By-Law whatsoever?",
                   data.prosecution,
                   data.prosecutionDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>
@@ -1470,7 +1470,7 @@ const generateStep9HTML = (data) => {
                   "27. Has the Insured or any partner/directors or employees ever been subject to any disciplinary action, been fined or penalized, or been the subject of an inquiry investigating or alleging professional misconduct?",
                   data.disciplinaryAction,
                   data.disciplinaryDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
                 </div>
@@ -1480,7 +1480,7 @@ const generateStep9HTML = (data) => {
                   "28. Has the Insured (including its subsidiaries, previous businesses or predecessors in business or its current or former partners/principals/directors) ever had any Insurer decline a proposal, imposed any special terms, cancelled or refused to renew a Professional Indemnity Insurance policy?",
                   data.piInsuranceDeclined,
                   data.declinedDetails,
-                  "Please provide details",
+                  "",
                   "text-xs"
                 )}
               </div>

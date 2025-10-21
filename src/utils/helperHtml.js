@@ -222,7 +222,7 @@ export const generateYesNoHTML = (
         <div class="border border-gray-300 rounded-lg px-3 py-2 min-h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
           !details ? "text-gray-300 italic" : "text-black-300"
         }">
-            ${details || `Enter Details}`}
+            ${details || `Please provide details}`}
         </div>
     </div>
 
