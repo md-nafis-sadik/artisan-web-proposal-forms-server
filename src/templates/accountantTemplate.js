@@ -112,7 +112,7 @@ const generateStep1HTML = (data, needsPageBreak = false) => {
 
   return generatePageTemplate(
     content,
-    "Miscellaneous PI Proposal Form",
+    "Accountants PI Proposal Form",
     needsPageBreak
   );
 };

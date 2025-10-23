@@ -108,7 +108,7 @@ const generateStep1HTML = (data, needsPageBreak = false) => {
 
   return generatePageTemplate(
     content,
-    "Miscellaneous PI Proposal Form",
+    "Recruitment and Labour Hire Combined Liability Form",
     needsPageBreak
   );
 };

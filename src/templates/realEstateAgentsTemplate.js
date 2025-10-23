@@ -16,7 +16,7 @@ const generateStep1HTML = (data, needsPageBreak = false) => {
       <div class="w-full flex flex-col items-center gap-4">
         <img src="https://artisan.quickdraw.tech/assets/pdfLogo.png" class="w-[119px] h-auto mx-auto" alt="Background Logo" />
         <div class="text-sm font-bold text-black-300 text-center w-full">
-          Recruitment and Labour Hire Combined Liability Form
+          Real Estate Agents PI Proposal Form
         </div>
       </div>
       <div class="mb-4 mt-5 w-full flex justify-center items-center">
@@ -109,7 +109,7 @@ const generateStep1HTML = (data, needsPageBreak = false) => {
 
   return generatePageTemplate(
     content,
-    "Miscellaneous PI Proposal Form",
+    "Real Estate Agents PI Proposal Form",
     needsPageBreak
   );
 };
