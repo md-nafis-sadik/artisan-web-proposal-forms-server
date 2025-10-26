@@ -10,7 +10,8 @@ export const generateFieldHTML = (
   value,
   placeholder = "",
   extraClasses = "",
-  labelClass = ""
+  labelClass = "",
+  fieldClass = ""
 ) => {
   const displayValue = formatValue(value);
   const isEmpty = !displayValue;
@@ -22,8 +23,8 @@ export const generateFieldHTML = (
         </label>
         <div class="border border-gray-300 rounded-lg px-3 py-2 min-h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
           isEmpty ? "text-gray-300 italic" : "text-black-300"
-        }">
-            ${displayValue || placeholder || `Enter ${label.replace(" *", "")}`}
+          } ${fieldClass || ""}">
+          ${displayValue || placeholder || `Enter ${label.replace(" *", "")}`}
         </div>
     </div>`;
 };
@@ -58,7 +59,7 @@ export const generateDateFieldHTML = (label, timestamp, placeholder = "") => {
 
   return `
      <div class="avoid-break">
-        <label class="block text-[10px] text-black-300 mb-1">
+        <label class="block text-[10px] text-black-300 mb-1 truncate">
             ${label}
         </label>
         <div class="border border-gray-300 rounded-lg px-3 py-2 min-h-[32px] flex items-center text-[10px] placeholder:text-[10px] ${
@@ -97,11 +98,9 @@ const generateDynamicRows = (fieldConfigs, dataArgs) => {
 };
 
 const parseDataArguments = (dataArgs, fieldCount) => {
-  // If first argument is an array, treat it as the main data source
   if (dataArgs.length === 1 && Array.isArray(dataArgs[0])) {
     const data = dataArgs[0];
 
-    // If it's an array of objects (like form data), return it directly
     if (
       data.length > 0 &&
       typeof data[0] === "object" &&
@@ -110,21 +109,17 @@ const parseDataArguments = (dataArgs, fieldCount) => {
       return data;
     }
 
-    // If it's an array of arrays, return it directly
     if (Array.isArray(data[0])) {
       return data;
     }
 
-    // If it's a simple array that matches field count, wrap it
     if (data.length === fieldCount) {
       return [data];
     }
 
-    // Otherwise return as single row
     return [data];
   }
 
-  // Handle multiple arguments
   if (dataArgs.length > 0 && dataArgs.length <= 4) {
     const allPrimitive = dataArgs.every(
       (arg) => !Array.isArray(arg) && typeof arg !== "object"
@@ -146,7 +141,6 @@ const generateFieldsHTML = (fieldConfigs, rowValues) => {
   fieldConfigs.forEach((field, index) => {
     let value;
 
-    // If rowValues is an object and field has a fieldName property, use that
     if (
       typeof rowValues === "object" &&
       !Array.isArray(rowValues) &&
@@ -154,7 +148,6 @@ const generateFieldsHTML = (fieldConfigs, rowValues) => {
     ) {
       value = rowValues[field.fieldName];
     } else {
-      // Otherwise use index-based access
       value = Array.isArray(rowValues) ? rowValues[index] : rowValues;
     }
 
@@ -175,6 +168,7 @@ const getGridClass = (fieldCount) => {
     2: "grid grid-cols-2",
     3: "grid grid-cols-3",
     4: "grid grid-cols-4",
+    5: "grid grid-cols-5",
   };
 
   return gridClasses[fieldCount] || "grid grid-cols-1";
@@ -541,6 +535,22 @@ export const generateDynamicYesNoHTML = (
       `
           : ""
       }
+    </div>
+  `;
+};
+
+
+export const generateDynamicFieldsHTML = (
+  config, // { value0: "Yes/No", value1: field config or array of field configs }
+  ...dataArgs // Can be array OR individual values (data1, data2, data3, data4)
+) => {
+  return `
+  <div class="flex flex-col gap-1 mb-2">
+    <div class="flex flex-col gap-1 mb-2">
+        <div class="flex flex-col gap-1">
+          ${generateDynamicRows(config.value, dataArgs)}
+        </div>
+    </div>
     </div>
   `;
 };

@@ -33,6 +33,9 @@ export const generateTailwindHTML = (content) => {
                       colors: {
                           primary: '#596efe',
                           'black-300': '#4a4a4a'
+                      },
+                      fontFamily: {
+                          'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
                       }
                   }
               }
@@ -42,7 +45,14 @@ export const generateTailwindHTML = (content) => {
           @page {
               size: A4;
               margin: 8mm;
-
+          }
+          
+          /* Import web fonts for consistent rendering */
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+          
+          /* Font definitions for consistent rendering across environments */
+          body, html {
+              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'roboto', 'Helvetica Neue', Arial, sans-serif !important;
           }
 
           /* Page template that repeats on every page */
@@ -51,6 +61,7 @@ export const generateTailwindHTML = (content) => {
                   background: white;
                   -webkit-print-color-adjust: exact;
                   print-color-adjust: exact;
+                  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'roboto', 'Helvetica Neue', Arial, sans-serif !important;
               }
 
               .page-break {

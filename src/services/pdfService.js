@@ -26,6 +26,9 @@ class PdfService {
           "--disable-background-timer-throttling",
           "--disable-backgrounding-occluded-windows",
           "--disable-renderer-backgrounding",
+          "--disable-fonts-cache",
+          "--font-render-hinting=none",
+          "--disable-font-subpixel-positioning",
         ],
       });
 
@@ -42,7 +45,13 @@ class PdfService {
         timeout: config.pdf.timeout,
       });
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await page.evaluateOnNewDocument(() => {
+        document.fonts.ready.then(() => {
+          console.log('Fonts loaded');
+        });
+      });
+
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       console.log("🎨 HTML content loaded, generating PDF...");
       
