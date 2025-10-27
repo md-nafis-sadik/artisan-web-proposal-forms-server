@@ -7,6 +7,7 @@ import { techConsultFormTemplate } from "../templates/technConsultTemplate.js";
 import { recruitLabourFormTemplate } from "../templates/recruitLabourTemplate.js";
 import { realEstateAgentsFormTemplate } from "../templates/realEstateAgentsTemplate.js";
 import { multimediaLiabilityFormTemplate } from "../templates/multimediaLiabilityTemplate.js";
+import { mortgageFinanceFormTemplate } from "../templates/mortgageFinanceTemplate.js";
 
 const router = express.Router();
 
@@ -37,6 +38,8 @@ router.post("/generate-pdf", async (req, res) => {
       htmlContent = realEstateAgentsFormTemplate(formData);
     } else if (type === "multimediaLiability") {
       htmlContent = multimediaLiabilityFormTemplate(formData);
+    } else if (type === "mortgageFinance") {
+      htmlContent = mortgageFinanceFormTemplate(formData);
     }
 
     if (!htmlContent || htmlContent.length === 0) {
