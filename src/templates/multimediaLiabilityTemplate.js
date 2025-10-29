@@ -173,27 +173,6 @@ const generateStep2HTML = (data, needsPageBreak = false) => {
                   </div>
                   <div>
                     <div class="text-[14px] font-semibold text-black-300">
-                      Claims made policy
-                    </div>
-                    <div class="text-gray-700 text-[10px] mt-2">
-                      The Policy is issued on a claims made and notified basis.
-                      This means that the Policy only covers the Insured for
-                      claims first made against the Insured during the Period of
-                      Insurance and notified to us during the Period of
-                      Insurance. Section 40(3) of the Insurance Contracts Act
-                      1984 may provide additional rights at law. That section
-                      provides that where the insured gave notice in writing to
-                      the insurer of facts that might give rise to a claim
-                      against the insured as soon as was reasonably practicable
-                      after the insured became aware of those facts but during
-                      the period of insurance, the insurer is not relieved of
-                      liability under the contract in respect of the claim, when
-                      made, by reason only that it was made after the expiration
-                      of the period of insurance.
-                    </div>
-                  </div>
-                  <div>
-                    <div class="text-[14px] font-semibold text-black-300">
                       Retroactive date
                     </div>
                     <div class="text-gray-700 text-[10px] mt-2">

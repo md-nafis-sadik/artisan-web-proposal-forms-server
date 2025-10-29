@@ -940,32 +940,40 @@ const generateStep6HTML = (data) => {
             <div class="text-xs font-semibold text-black-300">Please advise the sources of finance used : Financiers</div>
             <div class="grid grid-cols-3 gap-3.5">
               ${generateFieldHTML("Banks", data.banksPercentage, "0%")}
-              ${generateFieldHTML("Non-Bank Financial Institutions (eg. Credit Unions, Building Societies, etc)", data.nonBankFinancialPercentage, "0%")}
-              ${generateFieldHTML("Non-Bank Lenders", data.nonBankLendersPercentage, "0%")}
-              ${generateFieldHTML("Managed Investment Schemes (eg. Solicitors Funds)", data.managedInvestmentPercentage, "0%")}
-              ${generateFieldHTML("Private Credit Providers", data.privateCreditPercentage, "0%")}
+              ${generateFieldHTML(
+                "Non-Bank Financial Institutions (eg. Credit Unions, Building Societies, etc)",
+                data.nonBankFinancialPercentage,
+                "0%"
+              )}
+              ${generateFieldHTML(
+                "Non-Bank Lenders",
+                data.nonBankLendersPercentage,
+                "0%"
+              )}
+              ${generateFieldHTML(
+                "Managed Investment Schemes (eg. Solicitors Funds)",
+                data.managedInvestmentPercentage,
+                "0%"
+              )}
+              ${generateFieldHTML(
+                "Private Credit Providers",
+                data.privateCreditPercentage,
+                "0%"
+              )}
             </div>
           </div>
           
           <div class="flex flex-col gap-2">
             <div class="text-xs font-semibold text-black-300">13. Please details of any other sources of finance that are used:</div>
             <div class="grid grid-cols-1 gap-3.5">
-              ${generateFieldHTML(
-                "",
-                data.otherFinanceSources,
-                "Enter here"
-              )}
+              ${generateFieldHTML("", data.otherFinanceSources, "Enter here")}
             </div>
           </div>
           
           <div class="flex flex-col gap-2">
             <div class="text-xs font-semibold text-black-300">14. What percentage of loans arranged fall within the following categories:</div>
             <div class="grid grid-cols-2 gap-3.5">
-              ${generateFieldHTML(
-                "> 95% LVR",
-                data.lvrAbove95Percentage,
-                "0%"
-              )}
+              ${generateFieldHTML("> 95% LVR", data.lvrAbove95Percentage, "0%")}
               ${generateFieldHTML(
                 "90% to 95% LVR",
                 data.lvr90To95Percentage,
@@ -1123,20 +1131,20 @@ const generateStep7HTML = (data) => {
           
 
           ${generateYesNoHTML(
-              "16. Does the Insured have authority to approve or settle loans on behalf of lenders?",
-              data.authorityToApproveLoans,
-              data.authorityToApproveLoansDetails,
-              "",
-              "text-xs"
-            )}
+            "16. Does the Insured have authority to approve or settle loans on behalf of lenders?",
+            data.authorityToApproveLoans,
+            data.authorityToApproveLoansDetails,
+            "",
+            "text-xs"
+          )}
 
           ${generateYesNoHTML(
-              "17. Is the proposer aware of any change in activity/structure that will occur in the coming financial year?",
-              data.activityStructureChange,
-              data.activityStructureChangeDetails,
-              "",
-              "text-xs"
-            )}
+            "17. Is the proposer aware of any change in activity/structure that will occur in the coming financial year?",
+            data.activityStructureChange,
+            data.activityStructureChangeDetails,
+            "",
+            "text-xs"
+          )}
 
             ${generateYesNoHTML(
               "18. Has any lender revoked their agreement with the Insured (including its subsidiaries or previous companies) to provide loan applications?",
@@ -1223,7 +1231,13 @@ const generateStep8HTML = (data) => {
             24. When hiring staff, does the Insured always:
           </div>
 
-          ${generateYesNoHTML("(a) Contact previous employers and obtain satisfactory references?", data.contactPreviousEmployers, null, "", "text-xs text-gray-700")}
+          ${generateYesNoHTML(
+            "(a) Contact previous employers and obtain satisfactory references?",
+            data.contactPreviousEmployers,
+            null,
+            "",
+            "text-xs text-gray-700"
+          )}
 
           ${generateYesNoHTML(
             "(b) Obtain a police check?",
@@ -1249,7 +1263,13 @@ const generateStep8HTML = (data) => {
             "text-xs"
           )}
 
-          ${generateYesNoHTML("26. Does the insured record and keep all telephone records, record of attendance and any other correspondence between themselves and financiers, vendors, clients or any other third party (including sub-contractor) engagements.", data.recordKeepAllCorrespondence, null, "", "text-xs")}
+          ${generateYesNoHTML(
+            "26. Does the insured record and keep all telephone records, record of attendance and any other correspondence between themselves and financiers, vendors, clients or any other third party (including sub-contractor) engagements.",
+            data.recordKeepAllCorrespondence,
+            null,
+            "",
+            "text-xs"
+          )}
 
           ${generateYesNoHTML(
             "27. Does the Insured ensure that all sub-contractors and professional consultants carry their own Professional Indemnity Insurance?",
